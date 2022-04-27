@@ -1,5 +1,5 @@
-import { Home } from "./pages/app-home.jsx"
-import { About } from "./pages/app-about.jsx"
+import { AppHome } from "./pages/app-home.jsx"
+import { AppAbout } from "./pages/app-about.jsx"
 
 import { AppHeader } from "./cmps/app-header.jsx"
 import { AppFooter } from "./cmps/app-footer.jsx"
@@ -31,8 +31,8 @@ export function App() {
             <Route path="/mail" component={MailApp} /> */}
                     <Route path="/book/:bookId" component={BookDetails} />
                     <Route path="/book" component={BookApp} />
-                    <Route path="/about" component={About} />
-                    <Route path="/" component={Home} />
+                    <Route path="/about" component={AppAbout} />
+                    <Route path="/" component={AppHome} />
                 </Switch>
             </main>
         

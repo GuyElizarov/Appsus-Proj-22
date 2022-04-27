@@ -1,4 +1,4 @@
-export function About(){
+export function AppAbout(){
 
     return <section className="about">
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati qui, blanditiis vel maiores maxime dolorem? Accusantium, sapiente quos. Dicta magni tempore neque est eum dolore rem dolorem earum ullam a

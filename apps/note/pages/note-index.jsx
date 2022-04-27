@@ -5,13 +5,14 @@ import { AddNote } from '../cmps/add-note.jsx'
 export class NoteApp extends React.Component {
 
     state = {
-        // notes:
+        notes: []
 
     }
 
     componentDidMount() {
-        const retrievedNotes = NoteService.query()
-        this.setState({ notes: retrievedNotes }, console.log(this.state))
+        NoteService.query().then(res => this.setState({ notes: res }, () => console.log(this.state)))
+
+
 
     }
 

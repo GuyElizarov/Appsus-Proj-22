@@ -21,8 +21,8 @@ const { Route, Switch } = ReactRouterDOM
 export function App() {
     return <Router>
         <section className="app">
-           
-                <AppHeader />
+
+            <AppHeader />
             <main>
                 <Switch>
                     {/* <Route path="/note/:noteId" component={NoteDetails} /> */}
@@ -35,9 +35,9 @@ export function App() {
                     <Route path="/" component={AppHome} />
                 </Switch>
             </main>
-        
-                <AppFooter />
-            
+
+            <AppFooter />
+
         </section>
     </Router>
 }

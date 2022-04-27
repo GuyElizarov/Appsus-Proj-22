@@ -21,9 +21,8 @@ const { Route, Switch } = ReactRouterDOM
 export function App() {
     return <Router>
         <section className="app">
-            <header>
+           
                 <AppHeader />
-            </header>
             <main>
                 <Switch>
                     {/* <Route path="/note/:noteId" component={NoteDetails} />
@@ -32,13 +31,13 @@ export function App() {
             <Route path="/mail" component={MailApp} /> */}
                     <Route path="/book/:bookId" component={BookDetails} />
                     <Route path="/book" component={BookApp} />
-                    {/* <Route path="/about" component={About} /> */}
+                    <Route path="/about" component={About} />
                     <Route path="/" component={Home} />
                 </Switch>
             </main>
-            <footer>
+        
                 <AppFooter />
-            </footer>
+            
         </section>
     </Router>
 }

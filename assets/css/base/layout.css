@@ -1,0 +1,20 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    height: 4.0625rem;
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+.app-footer {
+    height: 3.125rem;
+    width: 100%;
+}

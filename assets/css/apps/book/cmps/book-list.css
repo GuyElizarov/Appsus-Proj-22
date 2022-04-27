@@ -1,0 +1,13 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-inline-end: 2rem;
+    padding-inline-start: 2rem;
+    justify-content: center;
+}
+
+.book-list:last-child {
+    margin-bottom: 2.5rem;
+}

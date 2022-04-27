@@ -4,8 +4,9 @@
 
 html {
     font-family: roboto;
-    color: var(--primary-clr-black);
     background-color: var(--primary-background-clr);
+    background: transparent;
+    color: var(--primary-clr-black);
 }
 
 body {

@@ -1,6 +1,6 @@
 export function AppFooter(){
 
-    return <section className="app-home">
-    fOOTER
-    </section>
+    return <footer className="app-footer">
+    footer
+    </footer>
 }

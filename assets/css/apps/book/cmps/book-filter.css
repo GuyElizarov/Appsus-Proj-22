@@ -1,0 +1,21 @@
+.book-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.book-filter label>* {
+    height: 1.5rem;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.book-filter button {
+    height: 1.5rem;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 0;
+    border: 0.5 solid #202124;
+    cursor: pointer;
+}

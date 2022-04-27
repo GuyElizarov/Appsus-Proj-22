@@ -9,9 +9,10 @@ class _AppHeader extends React.Component {
         return <header className="app-header">
             <h1 className="app-logo">🧬Appsus</h1>
             <nav>
-                <NavLink to="/" exact>Home</NavLink>
                 <NavLink to="/about">About</NavLink>
-                <NavLink to="/book">Our Books</NavLink>
+                <NavLink to="/book">Books</NavLink>
+                <NavLink to="/mail">Mail</NavLink>
+                <NavLink to="/" exact>Home</NavLink>
             </nav>
         </header>
     }

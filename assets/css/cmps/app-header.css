@@ -3,3 +3,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.app-header nav a {
+    margin: 1rem;
+}

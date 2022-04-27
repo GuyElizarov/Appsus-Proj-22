@@ -26,11 +26,11 @@ export function App() {
             <main>
                 <Switch>
                     {/* <Route path="/note/:noteId" component={NoteDetails} /> */}
-                    <Route path="/note" component={NoteApp} />
+                    {/* <Route path="/note" component={NoteApp} /> */}
                     {/* <Route path="/mail/:mailId" component={MailDetails} /> */}
-                    {/* <Route path="/mail" component={MailApp} /> */}
-                    <Route path="/book/:bookId" component={BookDetails} />
-                    <Route path="/book" component={BookApp} />
+                    <Route path="/mail" component={MailApp} />
+                    {/* <Route path="/book/:bookId" component={BookDetails} />
+                    <Route path="/book" component={BookApp} /> */}
                     <Route path="/about" component={AppAbout} />
                     <Route path="/" component={AppHome} />
                 </Switch>

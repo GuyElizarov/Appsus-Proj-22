@@ -1,8 +1,8 @@
 
 import { bookService } from "../services/book-service.js"
-import { utilService } from '../services/util.service.js'
-import { LongText } from '../cmps/long-text.jsx'
-import { Loader } from "../cmps/loader.jsx"
+import { utilService } from '../../../services/util-service.js'
+import { LongText } from '../../../cmps/long-text.jsx'
+import { Loader } from "../../../cmps/loader.jsx"
 import { ReviewList } from "../cmps/review-list.jsx"
 import { ReviewAdd } from "../cmps/review-add.jsx"
 

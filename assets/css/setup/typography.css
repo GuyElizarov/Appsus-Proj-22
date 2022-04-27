@@ -1,0 +1,19 @@
+@font-face {
+    font-family: roboto;
+    src: url('../../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: roboto-bold;
+    src: url('../../fonts/Roboto/Roboto-Bold.ttf');
+}
+
+@font-face {
+    font-family: google-sans;
+    src: url('../../fonts/Noto_Sans/NotoSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: google-sans-bold;
+    src: url('../../fonts/Noto_Sans/NotoSans-Bold.ttf');
+}

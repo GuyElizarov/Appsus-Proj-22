@@ -2,7 +2,7 @@ export function GoogleBook({ book ,onAddBook}) {
     return <React.Fragment>
         <p>{book.volumeInfo.title}</p>
         <button onClick={(book) => {
-           const book = {
+           const newBook = {
                 authors: book.volumeInfo.authors,
                 categories: book.volumeInfo.categories,
                 description: book.volumeInfo.description,
@@ -15,7 +15,7 @@ export function GoogleBook({ book ,onAddBook}) {
                 thumbnail: book.volumeInfo.imageLinks.thumbnail,
                 title: book.volumeInfo.title,
             }
-            onAddBook(book)
+            onAddBook(newBook)
         }}></button>
     </React.Fragment>
 

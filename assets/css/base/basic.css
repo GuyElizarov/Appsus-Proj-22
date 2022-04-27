@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: roboto;
+    color: var(--primary-clr-black);
+    background-color: var(--primary-background-clr);
+}
+
 body {
     margin: 0;
 }

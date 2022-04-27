@@ -19,7 +19,7 @@ const gNotes = [
         id: "n102",
         type: "note-img",
         info: {
-            url: "http://some-img/me",
+            url: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-www.oktopost.com%2Fblog%2Fwp-content%2Fuploads%2F2021%2F02%2FHero-Elf4IhEXUAApPJQ.jpeg&imgrefurl=https%3A%2F%2Fwww.oktopost.com%2Fblog%2Ftop-11-social-media-meme-ideas-tools-2021%2F&tbnid=A18Nir-EY2_TPM&vet=12ahUKEwi72M6vqLT3AhVMQRoKHUeYB2EQMygAegUIARCWAQ..i&docid=SPAgxhUr6qmWtM&w=700&h=468&q=meme&ved=2ahUKEwi72M6vqLT3AhVMQRoKHUeYB2EQMygAegUIARCWAQ",
             title: "Bobi and Me"
         },
         style: {
@@ -47,7 +47,7 @@ function query(filterBy) {
     if (!notes) {
         notes = gNotes
         _saveToStorage(notes)
-        Promise.resolve(notes)
+        return Promise.resolve(notes)
     } else {
         // if (filterBy) {
         //     let { type, name } = filterBy

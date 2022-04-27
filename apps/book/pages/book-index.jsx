@@ -21,7 +21,7 @@ export class BookApp extends React.Component {
         this.setState({ filterBy }, this.loadBooks)
     }
 
-    onAddBook=(book)=>{
+    onAddBook = (book) => {
         bookService.addBook(book)
         this.loadBooks()
 

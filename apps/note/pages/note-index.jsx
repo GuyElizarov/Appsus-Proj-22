@@ -12,15 +12,15 @@ export class NoteApp extends React.Component {
     componentDidMount() {
         NoteService.query().then(res => this.setState({ notes: res }, () => console.log(this.state)))
 
-
-
     }
 
     render() {
+        const { notes } = this.state
+        if (!notes) return <div></div>
         return <section className="note-app">
             <h1>i AM The note app</h1>
             <AddNote />
-            <NotesPreview />
+            <NotesPreview notes={notes} />
         </section>
     }
 }

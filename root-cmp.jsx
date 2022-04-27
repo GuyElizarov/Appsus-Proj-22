@@ -7,7 +7,7 @@ import { AppFooter } from "./cmps/app-footer.jsx"
 import { BookApp } from "./apps/book/pages/book-index.jsx"
 import { BookDetails } from "./apps/book/pages/book-details.jsx"
 import { MailApp } from "./apps/mail/pages/mail-index.jsx"
-import { MailDetails } from "./apps/mail/pages/mail-details.jsx"
+// import { MailDetails } from "./apps/mail/pages/mail-details.jsx"
 import { NoteApp } from "./apps/note/pages/note-index.jsx"
 import { NoteDetails } from "./apps/note/pages/note-details.jsx"
 

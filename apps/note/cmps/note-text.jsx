@@ -1,11 +1,10 @@
+const { Link } = ReactRouterDOM
 export function NoteText({ note }) {
 
-
-    console.log(note)
-
-
-    return <div className="note">
+    return <Link to={`/note/${note.id}`}><div className="note">
+        <p>{note.info.txt}</p>
 
     </div>
+    </Link>
 
 }

@@ -1,0 +1,15 @@
+.note {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.note img {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 1rem;
+}
+
+.note span {
+    margin-bottom: 1rem;
+}

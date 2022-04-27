@@ -27,9 +27,7 @@ export class BookAdd extends React.Component {
 
     handleChange = ({ target }) => {
         const value = target.value
-        console.log('value', value);
         this.setState((prevState) => ({ ...prevState, searchBy: value }))
-        console.log(this.state);
     }
 
     render() {

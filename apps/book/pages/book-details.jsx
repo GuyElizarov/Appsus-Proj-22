@@ -40,10 +40,8 @@ export class BookDetails extends React.Component {
 
     onSaveReview = (review) => {
         const { bookId } = this.props.match.params
-        console.log(this.props);
         bookService.addReview(review, bookId)
             .then(this.loadBook)
-            console.log(review);
     }
 
     render() {

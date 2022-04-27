@@ -14,12 +14,15 @@ const gNotes = [
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
+        },
+        style: {
+            backgroundColor: "#00d"
         }
     }, {
         id: "n102",
         type: "note-img",
         info: {
-            url: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-www.oktopost.com%2Fblog%2Fwp-content%2Fuploads%2F2021%2F02%2FHero-Elf4IhEXUAApPJQ.jpeg&imgrefurl=https%3A%2F%2Fwww.oktopost.com%2Fblog%2Ftop-11-social-media-meme-ideas-tools-2021%2F&tbnid=A18Nir-EY2_TPM&vet=12ahUKEwi72M6vqLT3AhVMQRoKHUeYB2EQMygAegUIARCWAQ..i&docid=SPAgxhUr6qmWtM&w=700&h=468&q=meme&ved=2ahUKEwi72M6vqLT3AhVMQRoKHUeYB2EQMygAegUIARCWAQ",
+            url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
             title: "Bobi and Me"
         },
         style: {
@@ -35,8 +38,10 @@ const gNotes = [
                 { txt: "Driving liscence", doneAt: null },
                 { txt: "Coding power", doneAt: 187111111 }
             ]
-
+        }, style: {
+            backgroundColor: "#00d"
         }
+
     }
 ]
 

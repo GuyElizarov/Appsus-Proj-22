@@ -1,6 +1,15 @@
+const { Link } = ReactRouterDOM
 export function NoteTodos({ note }) {
-    console.log(note)
-    return <div className="note">
+    const { label, todos } = note.info
 
-    </div>
+    return <Link to={`/note/${note.id}`}>
+        <div className="note">
+            <h2>{label}</h2>
+            <ul>
+                {todos.map(todo => {
+                    <li>{todo.txt}</li>
+                })}
+            </ul>
+        </div>
+    </Link>
 }

@@ -15,7 +15,7 @@ export class NoteWrapper extends React.Component {
     render() {
         const { note } = this.props
         if (!note) return <React.Fragment></React.Fragment>
-        console.log(note.type)
+        console.log(note.style)
         const DynamicCmp = () => {
             switch (note.type) {
                 case 'note-txt':
@@ -27,14 +27,14 @@ export class NoteWrapper extends React.Component {
             }
         }
         const { style } = note
-        return (<div className='note-wrapper' style={style}>
+        return <div className='note-wrapper' style={style}>
             <DynamicCmp />
 
             <div className="buttons">
 
                 <label htmlFor="color">🎨 <input style={{ visibility: 'hidden' }} type="color" id='color' /></label> </div>
 
-        </div >)
+        </div >
 
     }
 

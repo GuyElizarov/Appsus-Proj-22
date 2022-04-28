@@ -28,7 +28,6 @@ export class MailFilter extends React.Component {
         this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value } }), () => {
             this.props.onSetCriteria(this.state.criteria)
         })
-
     }
 
     onFilter = (ev) => {

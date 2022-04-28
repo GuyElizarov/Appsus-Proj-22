@@ -4,7 +4,8 @@ import { storageService } from "../../../services/storage-service.js"
 export const NoteService = {
     query,
     addNote,
-    remove
+    remove,
+    pinNoteToTop
 }
 
 
@@ -19,10 +20,12 @@ const gNotes = [
         },
         style: {
             backgroundColor: "#cf7676"
-        }
+        },
+        prevIndex: null
     }, {
         id: "n104",
         type: "note-img",
+        isPinned: false,
         info: {
             url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
             title: "Bobi and Me"
@@ -30,10 +33,12 @@ const gNotes = [
         style: {
             backgroundColor: "#cf7676"
         }
+        , prevIndex: null
     },
     {
         id: "n103",
         type: "note-todos",
+        isPinned: false,
         info: {
             label: "Get my stuff together",
             todos: [
@@ -43,19 +48,22 @@ const gNotes = [
         },
         style: {
             backgroundColor: "#cf7676"
-        }
+        },
+        prevIndex: null
 
     },
     {
         id: "n102",
         type: "note-video",
+        isPinned: false,
         info: {
             url: "https://www.youtube.com/embed/7A1fNr3KXoM",
             title: "Bobi and Me"
         },
         style: {
             backgroundColor: "#cf7676"
-        }
+        },
+        prevIndex: null
     }
 ]
 
@@ -96,6 +104,7 @@ function _createNote(note) {
         id: utilService.makeId(),
         type: note.type,
         isPinned: false,
+        prevIndex: null,
         info: note.note
     }
 }
@@ -104,6 +113,23 @@ function remove(noteId) {
     var notes = _loadFromStorage()
     notes = notes.filter(note => note.id !== noteId)
     _saveToStorage(notes)
+    return Promise.resolve()
+}
+
+function pinNoteToTop(noteId) {
+    var notes = _loadFromStorage()
+    const requestedNoteIdx = notes.findIndex(note => note.id)
+    const requestedNote = notes.find(note => note.id === noteId)
+    if (!requestedNote.isPinned) {
+        requestedNote.prevIndex = requestedNoteIdx
+        const note = notes.splice(requestedNoteIdx, 1)
+        notes = [note, ...notes]
+    } else {
+
+        notes.splice(requestedNote.prevIndex, 0, requestedNote)
+        requestedNote.prevIndex = null
+    }
+
     return Promise.resolve()
 }
 

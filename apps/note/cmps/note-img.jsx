@@ -10,7 +10,6 @@ export function NoteImg({ note, del }) {
         <Link to={`/note/${note.id}`}>
             <img src={note.info.url} alt="" />
             <span>{note.info.title}</span></Link>
-        <NoteButtons noteId={note.id} deleteNote={onDeleteNote} />
     </div>
 
 }

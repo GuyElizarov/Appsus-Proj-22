@@ -12,6 +12,5 @@ export function NoteTodos({ note }) {
             })}
         </ul>
     </Link>
-        <NoteButtons noteId={note.id} deleteNote={onDeleteNote} />
     </div>
 }

@@ -1,0 +1,8 @@
+.notes-list {
+    display: flex;
+
+    flex-grow: 1;
+    column-width: 240px;
+    column-gap: 20px;
+    height: fit-content;
+}

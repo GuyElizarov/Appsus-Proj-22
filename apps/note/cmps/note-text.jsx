@@ -27,7 +27,6 @@ export class NoteText extends React.Component {
         return <div style={style} className="note" > <Link to={`/note/${note.id}`}>
             <p>{note.info.txt}</p>
         </Link>
-            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} />
         </div>
     }
 

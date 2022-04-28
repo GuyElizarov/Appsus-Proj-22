@@ -17,7 +17,7 @@ const gMails = [{
         name: 'Yaron Bitton',
         subject: 'Save My Compony!',
         body: 'Pleas we need your skills',
-        isRead: false,
+        isRead: true,
         sentAt: 1551133930594,
         from: 'yaron@momo.com',
         to: 'user@appsus.com',
@@ -27,7 +27,7 @@ const gMails = [{
         name: 'Nadav Nadav',
         subject: 'Top Secret',
         body: 'I am PUKI!!!',
-        isRead: false,
+        isRead: true,
         sentAt: 1551133930594,
         from: 'nadav@momo.com',
         to: 'user@appsus.com',
@@ -69,16 +69,22 @@ function query(criteria) {
     }
     if (criteria) {
         let { labels, isStared, isRead, txt, status } = criteria
-        // if (!minPrice) minPrice = 0
-        // if (!maxPrice) maxPrice = Infinity
-        // books = books.filter(book => {
-        //     const { amount } = book.listPrice
-        //     return (book.title.toLowerCase().includes(title.toLowerCase()) &&
-        //         amount >= minPrice &&
-        //         amount <= maxPrice)
-        // })
+        mails = mails.filter(mail => {
+
+            console.log(mail.isRead, isRead);
+            return (isTxtInMail(txt, mail) && mail.isRead === isRead)
+        })
     }
     return Promise.resolve(mails)
+}
+
+function isTxtInMail(txt, mail) {
+    for (const key in mail) {
+        if (typeof(mail[key]) === 'string' && (mail[key]).toLowerCase().includes(txt.toLowerCase())) {
+            return true
+        }
+    }
+    return false
 }
 
 function getById(mailId) {

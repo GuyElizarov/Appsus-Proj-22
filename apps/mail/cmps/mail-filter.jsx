@@ -1,26 +1,60 @@
+
 export class MailFilter extends React.Component {
 
     state = {
-        searchBy: '',
+        criteria: {
+            status: '',
+            txt: '',
+            isRead: false,
+            // isStared: true, 
+            // labels: ['important', 'romantic'] 
+        }
     }
 
+    inputRef
+
+    componentDidMount() {
+        this.inputRef = React.createRef()
+    }
 
     handleChange = ({ target }) => {
-        const value = target.value
-        this.setState((prevState) => ({ ...prevState, searchBy: value }))
+        let value = target.value
+        switch (target.value) {
+            case "true":
+                value = true
+                break;
+            case "false":
+                value = false
+                break;
+        }
+        const field = target.name
+        this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value } }), () => {
+            this.props.onSetCriteria(this.state.criteria)
+        })
         console.log(this.state);
     }
 
+    onFilter = (ev) => {
+        ev.preventDefault()
+        this.props.onSetCriteria(this.state.criteria)
+    }
+
+
     render() {
-        const {searchBy } = this.state
+        const { txt, isRead } = this.state.criteria
         return (
             <section>
 
-                <form onSubmit={this.onSubmit}>
-                    <input type="search" value={searchBy} placeholder="search by text" onChange={this.handleChange} />
-                    <button>Search</button>
-                </form>
+                <form onSubmit={this.onFilter}>
+                    <input name="txt" type="search" value={txt}
+                        onChange={this.handleChange} ref={this.inputRef} placeholder="Search mail" />
 
+                    <select onChange={this.handleChange} value={isRead} name="isRead">
+                        <option value="all" >All</option>
+                        <option value={true} >Read</option>
+                        <option value={false} >Unread</option>
+                    </select>
+                </form>
             </section>
         )
     }

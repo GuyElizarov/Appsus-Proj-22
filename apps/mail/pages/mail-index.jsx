@@ -14,8 +14,7 @@ export class MailApp extends React.Component {
 
     state = {
         mails: [],
-        filterBy: null,
-        searchBy: null
+        criteria: null,
     }
 
     componentDidMount() {
@@ -23,31 +22,44 @@ export class MailApp extends React.Component {
     }
 
     loadMails = () => {
-        mailService.query().then(mails => this.setState({ mails }))
+        mailService.query(this.state.criteria)
+        .then(mails => this.setState({ mails }))
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, this.loadMails)
+    onSetCriteria = (criteria) => {
+        this.setState({ criteria }, this.loadMails)
+
+        const urlSrcPrm = new URLSearchParams(criteria)
+        const searchStr = urlSrcPrm.toString()
+        this.props.history.push(`/mail?${searchStr}`)
     }
 
-    // onAddBook=(mail)=>{
+    get mailsToDisplay() {
+        const { mails } = this.state
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        const status = urlSrcPrm.get('status')
+        if (!status) return mails
+        return mails.filter(mail => (mail.status === status))
+    }
+
+
+    // onAddMail=(mail)=>{
     //     mailService.addMail(mail)
     //     this.loadMails()
     // }
 
     render() {
         const { mails } = this.state
-        return <Router>
-            <section className="mail-app">
-                {/* <MailFilter/> */}
-                <Switch>
+        return <section className="mail-app">
+            <MailFilter onSetCriteria={this.onSetCriteria} />
+            <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />
-                <Route path="/mail/" component={MailList} />
-                </Switch>
-                {/* <EmailCompose/> */}
-                {/* <EmailFolderList/> */}
-            </section>
-        </Router>
+                <Route path="/mail" component={() => <MailList mails={this.mailsToDisplay} />} />
+            </Switch>
+            {/* <EmailCompose/> */}
+            {/* <MailFolderList/> */}
+        </section>
+
     }
 
 }

@@ -10,6 +10,12 @@
     margin-bottom: 1rem;
 }
 
+.note a {
+    display: flex;
+    flex-direction: column;
+    background-color: inherit;
+}
+
 .note span {
     margin-bottom: 1rem;
 }

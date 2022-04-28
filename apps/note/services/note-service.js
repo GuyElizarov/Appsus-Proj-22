@@ -2,7 +2,9 @@ import { utilService } from "../../../services/util-service.js"
 import { storageService } from "../../../services/storage-service.js"
 
 export const NoteService = {
-    query
+    query,
+    addNote,
+    remove
 }
 
 
@@ -16,17 +18,17 @@ const gNotes = [
             txt: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#cf7676"
         }
     }, {
-        id: "n102",
+        id: "n104",
         type: "note-img",
         info: {
             url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
             title: "Bobi and Me"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#cf7676"
         }
     },
     {
@@ -35,13 +37,25 @@ const gNotes = [
         info: {
             label: "Get my stuff together",
             todos: [
-                { txt: "Driving liscence", doneAt: null },
-                { txt: "Coding power", doneAt: 187111111 }
+                { txt: "Driving liscence", doneAt: null, todoId: utilService.makeId() },
+                { txt: "Coding power", doneAt: 187111111, todoId: utilService.makeId() }
             ]
-        }, style: {
-            backgroundColor: "#00d"
+        },
+        style: {
+            backgroundColor: "#cf7676"
         }
 
+    },
+    {
+        id: "n102",
+        type: "note-video",
+        info: {
+            url: "https://www.youtube.com/embed/7A1fNr3KXoM",
+            title: "Bobi and Me"
+        },
+        style: {
+            backgroundColor: "#cf7676"
+        }
     }
 ]
 
@@ -67,6 +81,31 @@ function query(filterBy) {
     }
 }
 
+function addNote(note) {
+    var notes = _loadFromStorage()
+    const newNote = _createNote(note)
+    notes = [newNote, ...notes]
+    _saveToStorage(notes)
+}
+
+
+
+
+function _createNote(note) {
+    return {
+        id: utilService.makeId(),
+        type: note.type,
+        isPinned: false,
+        info: note.note
+    }
+}
+
+function remove(noteId) {
+    var notes = _loadFromStorage()
+    notes = notes.filter(note => note.id !== noteId)
+    _saveToStorage(notes)
+    return Promise.resolve()
+}
 
 function _saveToStorage(notes) {
     storageService.saveToStorage(NOTES_KEY, notes)

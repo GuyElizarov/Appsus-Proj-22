@@ -18,6 +18,7 @@ export class MailFilter extends React.Component {
     }
 
     handleChange = ({ target }) => {
+<<<<<<< HEAD
         let value = target.value
         switch (target.value) {
             case "true":
@@ -32,6 +33,10 @@ export class MailFilter extends React.Component {
             this.props.onSetCriteria(this.state.criteria)
         })
         console.log(this.state);
+=======
+        const value = target.value
+        this.setState((prevState) => ({ ...prevState, searchBy: value }))
+>>>>>>> 48456f9 (Eytans commit)
     }
 
     onFilter = (ev) => {
@@ -41,7 +46,11 @@ export class MailFilter extends React.Component {
 
 
     render() {
+<<<<<<< HEAD
         const { txt, isRead } = this.state.criteria
+=======
+        const { searchBy } = this.state
+>>>>>>> 48456f9 (Eytans commit)
         return (
             <section>
 

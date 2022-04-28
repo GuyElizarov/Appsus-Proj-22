@@ -50,7 +50,7 @@ export class MailFilter extends React.Component {
                         onChange={this.handleChange} ref={this.inputRef} placeholder="Search mail" />
 
                     <select onChange={this.handleChange} value={isRead} name="isRead">
-                        <option value="all" >All</option>
+                        {/* <option value="all" >All</option> */}
                         <option value={true} >Read</option>
                         <option value={false} >Unread</option>
                     </select>

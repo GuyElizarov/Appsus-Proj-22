@@ -52,12 +52,12 @@ export class MailApp extends React.Component {
         const { mails } = this.state
         return <section className="mail-app">
             <MailFilter onSetCriteria={this.onSetCriteria} />
+            <MailFolderList onSetCriteria={this.onSetCriteria} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />
                 <Route path="/mail" component={() => <MailList mails={this.mailsToDisplay} />} />
             </Switch>
             {/* <EmailCompose/> */}
-            {/* <MailFolderList/> */}
         </section>
 
     }

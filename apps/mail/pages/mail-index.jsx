@@ -4,6 +4,7 @@ import { MailFilter } from '../cmps/mail-filter.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 import { mailService } from '../services/mail-service.js'
 import { MailDetails } from "./mail-details.jsx"
+import { MailCompose } from "../cmps/mail-compose.jsx"
 
 
 
@@ -51,13 +52,13 @@ export class MailApp extends React.Component {
     render() {
         const { mails } = this.state
         return <section className="mail-app">
-            <MailFilter onSetCriteria={this.onSetCriteria} />
+            <MailCompose/>
             <MailFolderList onSetCriteria={this.onSetCriteria} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />
                 <Route path="/mail" component={() => <MailList mails={this.mailsToDisplay} />} />
             </Switch>
-            {/* <EmailCompose/> */}
+            <MailFilter onSetCriteria={this.onSetCriteria} />
         </section>
 
     }

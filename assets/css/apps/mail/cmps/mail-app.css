@@ -1,4 +1,19 @@
 .mail-app {
     flex-grow: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: 256px 1fr;
+    grid-template-rows: 48px 1fr;
+}
+
+.mail-folder-list {
+    grid-row: 2/-1;
+}
+
+
+/* .mail-list {
+} */
+
+.mail-filter {
+    grid-row: 1/2;
+    grid-column: 2/-1;
 }

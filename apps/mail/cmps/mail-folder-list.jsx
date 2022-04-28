@@ -29,7 +29,7 @@ export class MailFolderList extends React.Component {
         return <section className="mail-folder-list">
            <div className="inbox">Inbox</div>
            <div className="starred">Starred</div>
-           <div className="sent-mail"></div>
+           <div className="sent-mail">Sent mail</div>
            <div className="draft">Draft</div>
         </section>
     }

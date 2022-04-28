@@ -70,8 +70,6 @@ function query(criteria) {
     if (criteria) {
         let { labels, isStared, isRead, txt, status } = criteria
         mails = mails.filter(mail => {
-
-            console.log(mail.isRead, isRead);
             return (isTxtInMail(txt, mail) && mail.isRead === isRead)
         })
     }
@@ -92,6 +90,20 @@ function getById(mailId) {
     const mail = mails.find(mail => mailId === mail.id)
     return Promise.resolve(mail)
 }
+
+function _createMail(to, subject, body) {
+    return {
+        id: utilService.makeId(),
+        name: loggedInUser.name,
+        subject,
+        body,
+        // isRead: false,
+        sentAt: 1551133930594,
+        from: loggedInUser.email,
+        to,
+    }
+}
+
 
 function _saveToStorage(mails) {
     storageService.saveToStorage(MAIL_KEY, mails)

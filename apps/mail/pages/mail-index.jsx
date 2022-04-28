@@ -43,7 +43,7 @@ export class MailApp extends React.Component {
     }
 
 
-    // onAddMail=(mail)=>{
+    // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)
     //     this.loadMails()
     // }

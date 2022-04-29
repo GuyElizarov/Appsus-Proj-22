@@ -76,6 +76,7 @@ const loggedInUser = {
 }
 
 console.log("eytan ani pa")
+console.log("eytan yesh lha flozim shel para")
 
 
 function query(criteria) {

@@ -89,7 +89,7 @@ function query(filterBy) {
         return Promise.resolve(notes)
     }
 }
-
+console.log('asdgasdg')
 function addNote(note) {
     var notes = _loadFromStorage()
     const newNote = _createNote(note)

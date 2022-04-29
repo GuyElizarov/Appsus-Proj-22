@@ -4,7 +4,7 @@ export class MailFilter extends React.Component {
         criteria: {
             status: '',
             txt: '',
-            isRead: false,
+            isRead: "all",
             // isStared: false,
             // All: 'all'
             // labels: ['important', 'romantic'] 
@@ -24,7 +24,6 @@ export class MailFilter extends React.Component {
         if (value === "true") value = true
         else if (value === "false") value = false
 
-        // if (value === "all") field = All
         this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value } }), () => {
             this.props.onSetCriteria(this.state.criteria)
         })
@@ -47,9 +46,9 @@ export class MailFilter extends React.Component {
                         onChange={this.handleChange} ref={this.inputRef} placeholder="Search mail" />
 
                     <select onChange={this.handleChange} value={isRead} name="isRead">
-                        <option value={true} >Read</option>
+                        <option value="all" >All</option>
                         <option value={false} >Unread</option>
-                        {/* <option value={All} >All</option> */}
+                        <option value={true} >Read</option>
                         {/* <option name="isStared" value={true} >⭐</option> */}
 
                     </select>

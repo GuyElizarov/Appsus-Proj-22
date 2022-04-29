@@ -5,11 +5,19 @@ export class MailFolderList extends React.Component {
             status: '',
             txt: '',
             isRead: false,
-            isStared: false, 
+            isStared: false,
         }
     }
 
-    // inputRef = React.createRef()
+    componentDidMount() {
+console.log(this.props);
+        // const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        // const criteria = urlSrcPrm.get('criteria')
+        // console.log(criteria, "criteria from folder");
+        // if (!criteria) return
+        // this.setState({ criteria })
+    }
+
 
     // handleChange = ({ target }) => {
     //     const value = target.value
@@ -25,13 +33,13 @@ export class MailFolderList extends React.Component {
     // }
 
     render() {
-        
+        console.log(this.props);
+
         return <section className="mail-folder-list">
-           <div className="inbox">Inbox</div>
-           <div className="starred">Starred</div>
-           <div className="sent-mail">Sent mail</div>
-           <div className="draft">Draft</div>
+            <div className="inbox">Inbox</div>
+            <div className="starred">Starred</div>
+            <div className="sent-mail">Sent mail</div>
+            <div className="draft">Draft</div>
         </section>
     }
 }
- 

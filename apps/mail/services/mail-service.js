@@ -84,7 +84,11 @@ function query(criteria) {
     }
     if (criteria) {
         let { isStared, isRead, txt, status } = criteria
+
+
         mails = mails.filter(mail => {
+
+            if (isRead === "all") return (isTxtInMail(txt, mail))
             return (isTxtInMail(txt, mail) && mail.isRead === isRead)
                 // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status)
                 // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status && mail.isStared===isStared)

@@ -24,14 +24,15 @@ export class MailApp extends React.Component {
 
     loadMails = () => {
         mailService.query(this.state.criteria)
-        .then(mails => this.setState({ mails }))
+            .then(mails => this.setState((prevState) => ({ ...prevState, mails })))
     }
 
     onSetCriteria = (criteria) => {
-        this.setState({ criteria }, this.loadMails)
+        this.setState((prevState) => ({ ...prevState, criteria }), this.loadMails)
 
         const urlSrcPrm = new URLSearchParams(criteria)
         const searchStr = urlSrcPrm.toString()
+        console.log(searchStr, "searchStr from index");
         this.props.history.push(`/mail?${searchStr}`)
     }
 
@@ -52,7 +53,7 @@ export class MailApp extends React.Component {
     render() {
         const { mails } = this.state
         return <section className="mail-app">
-            <MailCompose/>
+            <MailCompose />
             <MailFolderList onSetCriteria={this.onSetCriteria} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />

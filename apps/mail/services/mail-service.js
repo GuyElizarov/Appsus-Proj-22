@@ -75,6 +75,8 @@ const loggedInUser = {
     fullname: 'Mahatma Appsus'
 }
 
+console.log("eytan ani pa")
+
 
 function query(criteria) {
     let mails = _loadFromStorage()

@@ -44,7 +44,6 @@ export class MailApp extends React.Component {
         return mails.filter(mail => (mail.status === status))
     }
 
-
     // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)
     //     this.loadMails()

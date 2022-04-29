@@ -17,12 +17,11 @@ export class NoteVideo extends React.Component {
 
 
     render() {
-        console.log('hhhhhhhgjhghjg')
         const { note } = this.state
         const { style } = this.state
         if (!note) return <React.Fragment></React.Fragment>
         return <div style={style} className="note" >
-            <iframe src={`${note.info.url}`} ></iframe>
+            <iframe allow={'fullscreen'} src={`${note.info.url}`} ></iframe>
             <span >{note.info.title}</span>
         </div>
     }

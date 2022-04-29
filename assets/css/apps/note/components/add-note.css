@@ -1,0 +1,40 @@
+.check {
+    /* word-break: break-word; */
+    position: relative;
+    z-index: 1;
+}
+
+.blank-shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+}
+
+.note-type-buttons {
+    position: relative;
+    z-index: 1;
+}
+
+.add-note-decoy {
+    width: 600px;
+    height: 100px;
+    border: 1px solid var(--notes-border-clr);
+}
+
+
+
+
+textarea {
+    height: 100px;
+    width: 600px;
+    resize: none;
+}
+
+
+/* input {
+    width: 300px;
+    word-break: break-word;
+} */

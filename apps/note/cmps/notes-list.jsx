@@ -1,8 +1,4 @@
-import { NoteText } from './note-text.jsx'
-import { NoteImg } from './note-img.jsx'
-import { NoteTodos } from './note-todos.jsx'
-import { NoteVideo } from './note-video.jsx'
-import { NotePreview } from './note-preview.jsx'
+
 import { NoteCard } from './note-card.jsx'
 
 

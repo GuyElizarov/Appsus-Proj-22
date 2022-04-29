@@ -9,5 +9,6 @@
     border: 0.5px solid var(--notes-border-clr);
     flex-wrap: wrap;
     margin-bottom: 30px;
+    border-radius: 15px;
 
 }

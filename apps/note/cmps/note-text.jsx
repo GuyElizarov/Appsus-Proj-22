@@ -10,7 +10,6 @@ export class NoteText extends React.Component {
     componentDidMount() {
         const { note } = this.props
         const backgroundColor = note.style
-        console.log('hh')
         this.setState({ note: note })
         this.setState((prevState) => ({ style: { backgroundColor: backgroundColor } }))
     }
@@ -19,13 +18,12 @@ export class NoteText extends React.Component {
     }
 
     render() {
-        console.log('yy')
         const { note } = this.state
         const { style } = this.state
         if (!note) return <React.Fragment></React.Fragment>
         const backgroundColor = style.backgroundColor
         return <div style={style} className="note" > <Link to={`/note/${note.id}`}>
-            <p>{note.info.txt}</p>
+            <p className='note-layout'>{note.info.txt}</p>
         </Link>
         </div>
     }

@@ -9,7 +9,7 @@ export function NoteImg({ note, del }) {
     return <div className="note">
         <Link to={`/note/${note.id}`}>
             <img src={note.info.url} alt="" />
-            <span>{note.info.title}</span></Link>
+            <span className='note-layout'>{note.info.title}</span></Link>
     </div>
 
 }

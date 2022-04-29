@@ -5,6 +5,8 @@ import { NoteVideo } from './note-video.jsx'
 import { NoteButtons } from './note-buttons.jsx'
 
 
+
+
 // export function NoteCard({ noteId, note }) {
 export class NoteCard extends React.Component {
 
@@ -17,18 +19,22 @@ export class NoteCard extends React.Component {
     }
 
     onDeleteNote = (noteId) => {
-        console.log(noteId)
         this.props.deleteNote(noteId)
     }
     onPinToTop = (noteId) => {
-        console.log(noteId)
         const { pinToTop } = this.props
         pinToTop(noteId)
     }
+    onChangeColor = (color, noteId) => {
+        const { changeColor } = this.props
+        changeColor(color, noteId)
+
+    }
+    backgroundColor
     render() {
-        if (!this.state.type) return <React.Fragment></React.Fragment>
         const { noteId, note } = this.props
-        console.log(note)
+        const { style } = note
+        if (!this.state.type) return <React.Fragment></React.Fragment>
         function getDynamicCmp(type) {
             switch (type) {
                 case 'note-txt':
@@ -41,10 +47,10 @@ export class NoteCard extends React.Component {
                     return <NoteVideo key={noteId} note={note} />
             }
         }
-
-        return (<div className="note-card">
+        console.log(style)
+        return <div className="note-card" style={style}>
             {getDynamicCmp(note.type)}
-            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} />
-        </div>)
+            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} />
+        </div>
     }
 }

@@ -1,5 +1,6 @@
+@import './layout.css';
 @import './components/notes-list.css';
 @import './components/note-preview.css';
 @import './components/note-previews.css';
 @import './components/note-card.css';
-@import './layout.css';
+@import './components/note-buttons.css';

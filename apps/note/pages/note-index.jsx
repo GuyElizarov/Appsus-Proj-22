@@ -20,21 +20,26 @@ export class NoteApp extends React.Component {
 
     loadNotes = () => {
         NoteService.query().then(res => this.setState({ notes: res }))
+        console.log('hh')
     }
     onDeleteNote = (noteId) => {
-        NoteService.remove(noteId).then(res => this.loadNotes())
+        NoteService.remove(noteId).then(this.loadNotes)
 
     }
     onPinToTop = (noteId) => {
-        NoteService.pinNoteToTop(noteId).then(res => this.loadNotes())
+        NoteService.pinNoteToTop(noteId).then(this.loadNotes)
+    }
+    onChangeColor = (color, noteId) => {
+        NoteService.changeNoteColor(color, noteId).then(this.loadNotes)
     }
     render() {
         const { notes } = this.state
-        if (!notes || notes.length === 0) return <React.Fragment></React.Fragment>
         return <section className="note-app notes-layout flex column">
             <h1>i AM The note app</h1>
             <AddNote onAddNote={this.onAddNote} />
-            <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} />
+            {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
+            <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} />
+
         </section>
     }
 }

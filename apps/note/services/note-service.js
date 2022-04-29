@@ -5,7 +5,8 @@ export const NoteService = {
     query,
     addNote,
     remove,
-    pinNoteToTop
+    pinNoteToTop,
+    changeNoteColor
 }
 
 
@@ -14,7 +15,7 @@ const gNotes = [
     {
         id: "n101",
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
             txt: "Fullstack Me Baby!"
         },
@@ -113,29 +114,59 @@ function remove(noteId) {
     var notes = _loadFromStorage()
     notes = notes.filter(note => note.id !== noteId)
     _saveToStorage(notes)
+    console.log(notes)
     return Promise.resolve()
 }
 
 function pinNoteToTop(noteId) {
+    console.log(noteId)
     var notes = _loadFromStorage()
-    const requestedNoteIdx = notes.findIndex(note => note.id)
+    const requestedNoteIdx = notes.findIndex(note => note.id === noteId)
     const requestedNote = notes.find(note => note.id === noteId)
+
     if (!requestedNote.isPinned) {
         requestedNote.prevIndex = requestedNoteIdx
-        const note = notes.splice(requestedNoteIdx, 1)
-        notes = [note, ...notes]
-    } else {
-
+        requestedNote.isPinned = true
+        const note = notes.splice(requestedNoteIdx, 1)[0]
+        console.log('note', note)
+        notes.unshift(note)
+        console.log(notes)
+        _saveToStorage(notes)
+        return Promise.resolve()
+    } else if (requestedNote.isPinned) {
+        notes.splice(requestedNoteIdx, 1)
         notes.splice(requestedNote.prevIndex, 0, requestedNote)
+        console.log(requestedNote.prevIndex)
+        requestedNote.isPinned = false
         requestedNote.prevIndex = null
+        _saveToStorage(notes)
+        return Promise.resolve()
     }
-
-    return Promise.resolve()
 }
+
+function changeNoteColor(color, noteId) {
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    note.style.backgroundColor = color
+    console.log(note)
+    _saveToStorage(notes)
+    return Promise.resolve()
+
+
+}
+
+
+
 
 function _saveToStorage(notes) {
     storageService.saveToStorage(NOTES_KEY, notes)
 }
 function _loadFromStorage() {
     return storageService.loadFromStorage(NOTES_KEY)
+}
+
+function getById(noteId) {
+    const notes = _loadFromStorage()
+    const note = notes.find(note => noteId === note.id)
+    return Promise.resolve(note)
 }

@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     getCurrencyIcon,
-    getLangByLangCode
+    getLangByLangCode,
+    getById
 }
 
 function makeId(length = 6) {
@@ -84,4 +85,9 @@ function getLangByLangCode(LangCode) {
         default:
             return 'English'
     }
+}
+function getById(noteId) {
+    const notes = _loadFromStorage()
+    const note = notes.find(note => noteId === note.id)
+    return Promise.resolve(note)
 }

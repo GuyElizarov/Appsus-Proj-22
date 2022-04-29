@@ -1,0 +1,58 @@
+.note-buttons {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+
+}
+
+.note-buttons button {
+    border-radius: 50%;
+    background-color: inherit;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.note-buttons button:hover {
+    background-color: inherit;
+    /* border: 0.5px solid #353535; */
+    background-color: #e5e3e3;
+}
+
+.color-picker {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    transform: translate(-25%, 100%);
+    width: fit-content;
+    height: 100px;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    border: 1px solid var(--notes-border-clr);
+    border-radius: 15px;
+    box-shadow: -1px 1px 1px 0.5px #888888;
+    padding: 10px;
+
+}
+
+.color-choice {
+
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+}
+
+.color-choice.blank {
+    background-image: url('../../../../imgs/no-color.png');
+    background-position: center;
+    background-size: 50px;
+}
+
+.color-choice:hover {
+    border: 1.5px solid #353535;
+    cursor: pointer;
+}

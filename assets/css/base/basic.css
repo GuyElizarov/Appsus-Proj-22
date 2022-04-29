@@ -21,3 +21,9 @@ a {
 ul {
     list-style: none;
 }
+
+
+
+button:hover {
+    cursor: pointer;
+}

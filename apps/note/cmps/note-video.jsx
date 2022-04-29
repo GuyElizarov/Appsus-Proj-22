@@ -20,11 +20,9 @@ export class NoteVideo extends React.Component {
         const { note } = this.state
         const { style } = this.state
         if (!note) return <React.Fragment></React.Fragment>
-        const backgroundColor = style.backgroundColor
         return <div style={style} className="note" >
             <iframe src={`${note.info.url}`} ></iframe>
-            <span>{note.info.title}</span>
-            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} />
+            <span className='note-layout'>{note.info.title}</span>
         </div>
     }
 

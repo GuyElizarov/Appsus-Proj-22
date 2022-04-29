@@ -26,9 +26,9 @@ export class NoteButtons extends React.Component {
     render() {
         const { noteId } = this.props
         return <div className="note-buttons">
-            <button onClick={this.onDeleteNote}><img src="../../../assets/imgs/trash.png" alt="" /></button>
-            <button onClick={this.onPinToTop}><img src="../../../assets/imgs/pin.png" alt="" /></button>
-            <button onClick={this.onOpenColorPicker}><img src="../../../assets/imgs/color-picker.png" alt="" /></button>
+            <button onClick={this.onDeleteNote}><img src="../../../assets/imgs/note/trash.png" alt="" /></button>
+            <button onClick={this.onPinToTop}><img src="../../../assets/imgs/note/pin.png" alt="" /></button>
+            <button onClick={this.onOpenColorPicker}><img src="../../../assets/imgs/note/color-picker.png" alt="" /></button>
             {this.state.isColorOpen && <ColorPicker noteId={noteId} changeColor={this.onChangeColor} />}
         </div>
     }

@@ -24,7 +24,7 @@ export class AddNoteImg extends React.Component {
 
     render() {
 
-        return <div>
+        return <div className="check">
             <form onSubmit={this.onSaveNote}>
                 <label htmlFor="text-area">
                     <textarea type="text" id="text-area" name="url" onChange={this.handleChange} />

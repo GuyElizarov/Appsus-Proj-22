@@ -23,14 +23,13 @@ export class AddNoteTxt extends React.Component {
 
     render() {
 
-        return <div>
+        return <div className="check ">
             <form onSubmit={this.onSaveNote}>
                 <label htmlFor="text-area">
-
-                    <textarea type="text" id="text-area" name="txt" onChange={this.handleChange} />
-                    <button>Add Note</button>
+                    <textarea type="text" id="text-area" name="txt" onChange={this.handleChange} contentEditable="true" />
                 </label>
+                <button>Add Note</button>
             </form>
-        </div>
+        </div >
     }
 }

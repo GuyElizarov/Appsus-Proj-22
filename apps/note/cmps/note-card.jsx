@@ -47,7 +47,6 @@ export class NoteCard extends React.Component {
                     return <NoteVideo key={noteId} note={note} />
             }
         }
-        console.log(style)
         return <div className="note-card" style={style}>
             {getDynamicCmp(note.type)}
             <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} />

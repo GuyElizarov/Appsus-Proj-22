@@ -32,17 +32,30 @@ export class MailApp extends React.Component {
 
         const urlSrcPrm = new URLSearchParams(criteria)
         const searchStr = urlSrcPrm.toString()
-        console.log(searchStr, "searchStr from index");
         this.props.history.push(`/mail?${searchStr}`)
     }
 
-    get mailsToDisplay() {
-        const { mails } = this.state
-        const urlSrcPrm = new URLSearchParams(this.props.location.search)
-        const status = urlSrcPrm.get('status')
-        if (!status) return mails
-        return mails.filter(mail => (mail.status === status))
+    onSetStatus = (status) => {
+        this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status } }), ()=>{
+            this.loadMails()
+            const urlSrcPrm = new URLSearchParams(this.state.criteria)
+            const searchStr = urlSrcPrm.toString()
+            this.props.history.push(`/mail?${searchStr}`)
+        }) 
     }
+    // onSetStatus = (status) => {
+    //     this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status } }), this.loadMails)
+    //     const urlSrcPrm = new URLSearchParams(this.state.criteria)
+    //     const searchStr = urlSrcPrm.toString()
+    //     this.props.history.push(`/mail?${searchStr}`)
+    // }
+    // get mailsToDisplay() {
+    //     const { mails } = this.state
+    //     const urlSrcPrm = new URLSearchParams(this.props.location.search)
+    //     const status = urlSrcPrm.get('status')
+    //     if (!status) return mails
+    //     return mails.filter(mail => (mail.status === status))
+    // }
 
     // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)
@@ -53,10 +66,10 @@ export class MailApp extends React.Component {
         const { mails } = this.state
         return <section className="mail-app">
             <MailCompose />
-            <MailFolderList onSetCriteria={this.onSetCriteria} />
+            <MailFolderList onSetStatus={this.onSetStatus} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />
-                <Route path="/mail" component={() => <MailList mails={this.mailsToDisplay} />} />
+                <Route path="/mail" component={() => <MailList mails={mails} />} />
             </Switch>
             <MailFilter onSetCriteria={this.onSetCriteria} />
         </section>

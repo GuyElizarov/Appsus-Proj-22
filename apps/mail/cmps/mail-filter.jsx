@@ -1,4 +1,8 @@
-export class MailFilter extends React.Component {
+
+const { withRouter } = ReactRouterDOM
+
+
+class _MailFilter extends React.Component {
 
     state = {
         criteria: {
@@ -6,7 +10,6 @@ export class MailFilter extends React.Component {
             txt: '',
             isRead: "all",
             // isStared: false,
-            // All: 'all'
             // labels: ['important', 'romantic'] 
         }
     }
@@ -15,11 +18,22 @@ export class MailFilter extends React.Component {
 
     componentDidMount() {
         this.inputRef = React.createRef()
+        this.getStatusFromSearch()
     }
 
+    getStatusFromSearch=()=>{
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        const status = urlSrcPrm.get('status')
+
+        console.log(status, "status from filter");
+        this.setState((prevState) => ({criteria: { ...prevState.criteria, status } }), () => {
+            this.props.onSetCriteria(this.state.criteria)
+        })
+    }
+    
     handleChange = ({ target }) => {
         let value = target.value
-        let field = target.name
+        const field = target.name
 
         if (value === "true") value = true
         else if (value === "false") value = false
@@ -37,12 +51,11 @@ export class MailFilter extends React.Component {
 
     render() {
         const { txt, isRead, isStared } = this.state.criteria
-        const { searchBy } = this.state
         return <section className="mail-filter">
 
                 <form onSubmit={this.onFilter}>
                     <input name="txt" type="search" value={txt}
-                        onChange={this.handleChange} ref={this.inputRef} placeholder="Search mail" />
+                        onChange={this.handleChange} ref={this.inputRef} placeholder= "Search mail" />
 
                     <select onChange={this.handleChange} value={isRead} name="isRead">
                         <option value="all" >All</option>
@@ -58,3 +71,5 @@ export class MailFilter extends React.Component {
         
     }
 }
+
+export const MailFilter = withRouter(_MailFilter)

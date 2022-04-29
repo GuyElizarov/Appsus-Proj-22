@@ -1,45 +1,31 @@
-export class MailFolderList extends React.Component {
+const { withRouter } = ReactRouterDOM
+
+class _MailFolderList extends React.Component {
 
     state = {
-        criteria: {
-            status: '',
-            txt: '',
-            isRead: false,
-            isStared: false,
-        }
+        status: ''
     }
 
     componentDidMount() {
-console.log(this.props);
-        // const urlSrcPrm = new URLSearchParams(this.props.location.search)
-        // const criteria = urlSrcPrm.get('criteria')
-        // console.log(criteria, "criteria from folder");
-        // if (!criteria) return
-        // this.setState({ criteria })
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        let status = urlSrcPrm.get('status')
+        console.log(status, "status from folder");
+        this.setStatus(status)
     }
 
-
-    // handleChange = ({ target }) => {
-    //     const value = target.value
-    //     const field = target.name
-    //     this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [field]: value } }), () => {
-    //         // this.props.onSetFilter(this.state.filterBy)
-    //     })
-    // }
-
-    // onFilter = (ev) => {
-    //     ev.preventDefault()
-    //     this.props.onSetFilter(this.state.filterBy)
-    // }
+    setStatus=(status)=>{
+        this.setState({ status }, ()=>this.props.onSetStatus(status))
+    }
 
     render() {
-        console.log(this.props);
-
         return <section className="mail-folder-list">
-            <div className="inbox">Inbox</div>
-            <div className="starred">Starred</div>
-            <div className="sent-mail">Sent mail</div>
-            <div className="draft">Draft</div>
+            <div className="inbox"  onClick={()=>this.setStatus('inbox')} >Inbox</div>
+            <div className="trash" onClick={()=>this.setStatus('stared')}>Trash</div>
+            <div className="starred" onClick={()=>this.setStatus('stared')}>Starred</div>
+            <div className="sent-mail" onClick={()=>this.setStatus('sent')}>Sent mail</div>
+            <div className="draft" onClick={()=>this.setStatus('draft')}>Draft</div>
         </section>
     }
 }
+
+export const MailFolderList = withRouter(_MailFolderList)

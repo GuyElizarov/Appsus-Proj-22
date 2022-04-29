@@ -90,8 +90,8 @@ function query(criteria) {
 
         mails = mails.filter(mail => {
 
-            if (isRead === "all") return (isTxtInMail(txt, mail))
-            return (isTxtInMail(txt, mail) && mail.isRead === isRead)
+            if (isRead === "all") return (isTxtInMail(txt, mail) && mail.status === status)
+            return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status)
                 // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status)
                 // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status && mail.isStared===isStared)
         })
@@ -100,6 +100,7 @@ function query(criteria) {
 }
 
 function isTxtInMail(txt, mail) {
+    if (!txt) return true
     for (const key in mail) {
         if (typeof(mail[key]) === 'string' && (mail[key]).toLowerCase().includes(txt.toLowerCase())) {
             return true

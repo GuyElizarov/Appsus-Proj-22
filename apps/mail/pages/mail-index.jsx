@@ -6,56 +6,57 @@ import { mailService } from '../services/mail-service.js'
 import { MailDetails } from "./mail-details.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 
-
-
-const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 
 export class MailApp extends React.Component {
 
     state = {
         mails: [],
-        criteria: null,
+        criteria: {
+            status: "inbox",
+            txt: '',
+            isRead: "all",
+        },
     }
 
     componentDidMount() {
+        const urlSrcPrm = new URLSearchParams(this.state.criteria)
+        const searchStr = urlSrcPrm.toString()
+        this.props.history.push(`/mail?${searchStr}`)
         this.loadMails()
     }
 
     loadMails = () => {
         mailService.query(this.state.criteria)
-            .then(mails => this.setState((prevState) => ({ ...prevState, mails })))
+            .then(mails => this.setState({ mails }))
     }
 
     onSetCriteria = (criteria) => {
-        this.setState((prevState) => ({ ...prevState, criteria }), this.loadMails)
-
+        this.setState({ criteria }, this.loadMails)
         const urlSrcPrm = new URLSearchParams(criteria)
         const searchStr = urlSrcPrm.toString()
         this.props.history.push(`/mail?${searchStr}`)
     }
 
-    onSetStatus = (status) => {
-        this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status } }), ()=>{
-            this.loadMails()
-            const urlSrcPrm = new URLSearchParams(this.state.criteria)
-            const searchStr = urlSrcPrm.toString()
-            this.props.history.push(`/mail?${searchStr}`)
-        }) 
+    get mailsToDisplay() {
+        const { mails } = this.state
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        const status = urlSrcPrm.get('status')
+         if (status === 'stared') return mails.filter(mail => !mail.isStared)
+        else return mails.filter(mail => (mail.status === status))
     }
-    // onSetStatus = (status) => {
-    //     this.setState((prevState) => ({ ...prevState, criteria: { ...prevState.criteria, status } }), this.loadMails)
-    //     const urlSrcPrm = new URLSearchParams(this.state.criteria)
-    //     const searchStr = urlSrcPrm.toString()
-    //     this.props.history.push(`/mail?${searchStr}`)
-    // }
-    // get mailsToDisplay() {
-    //     const { mails } = this.state
-    //     const urlSrcPrm = new URLSearchParams(this.props.location.search)
-    //     const status = urlSrcPrm.get('status')
-    //     if (!status) return mails
-    //     return mails.filter(mail => (mail.status === status))
-    // }
+
+    onDeleteMail = (mailId) => {
+        mailService.remove(mailId).then(this.onGoBack)
+    }
+
+    onGoBack = () => {
+        this.props.history.push('/mail')
+    }
+
+    onToggleStar = (mailId) => {
+        mailService.toggleStar(mailId).then(this.loadMails)
+    }
 
     // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)
@@ -63,17 +64,16 @@ export class MailApp extends React.Component {
     // }
 
     render() {
-        const { mails } = this.state
+        const { criteria } = this.state
         return <section className="mail-app">
+
             <MailCompose />
-            <MailFolderList onSetStatus={this.onSetStatus} />
+            <MailFolderList criteria={criteria} onSetCriteria={this.onSetCriteria} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />
-                <Route path="/mail" component={() => <MailList mails={mails} />} />
+                <Route path="/mail" component={() => <MailList mails={this.mailsToDisplay} onDeleteMail={this.onDeleteMail} onToggleStar={this.onToggleStar} />} />
             </Switch>
-            <MailFilter onSetCriteria={this.onSetCriteria} />
+            <MailFilter criteria={criteria} onSetCriteria={this.onSetCriteria} />
         </section>
-
     }
-
 }

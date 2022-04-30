@@ -1,14 +1,13 @@
 
 import { MailPreview } from './mail-preview.jsx'
-import { Loader } from '../../../cmps/loader.jsx'
 import { mailService } from '../services/mail-service.js'
 
 
 
-export function MailList({ mails }) {
-    
-    if (!mails || !mails.length) return <Loader color="black" />
+export function MailList({ mails, onDeleteMail ,onToggleStar}) {
+
+    if (!mails || !mails.length) return <div className="no-mails">no mails</div>
     return <section className="mails-list">
-        {mails.map(mail => <MailPreview mail={mail} key={mail.id} />)}
+        {mails.map(mail => <MailPreview mail={mail} key={mail.id} onDeleteMail={onDeleteMail} onToggleStar={onToggleStar}/>)}
     </section>
 }

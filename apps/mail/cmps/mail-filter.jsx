@@ -5,71 +5,64 @@ const { withRouter } = ReactRouterDOM
 class _MailFilter extends React.Component {
 
     state = {
-        criteria: {
-            status: '',
-            txt: '',
-            isRead: "all",
-            // isStared: false,
-            // labels: ['important', 'romantic'] 
-        }
+        criteria: null
+        // criteria: {
+        //     status: "inbox",
+        //     txt: '',
+        //     isRead: "all",
+        // }
     }
 
-    inputRef
+    inputRef = null
 
     componentDidMount() {
         this.inputRef = React.createRef()
-        this.getStatusFromSearch()
+        this.setState({ criteria: this.props.criteria })
     }
 
-    getStatusFromSearch=()=>{
+    getStatusFromSearch = () => {
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
-        const status = urlSrcPrm.get('status')
 
-        console.log(status, "status from filter");
-        this.setState((prevState) => ({criteria: { ...prevState.criteria, status } }), () => {
-            this.props.onSetCriteria(this.state.criteria)
-        })
+        const status = urlSrcPrm.get('status')
+        return status
+        
     }
-    
+
     handleChange = ({ target }) => {
         let value = target.value
         const field = target.name
-
         if (value === "true") value = true
         else if (value === "false") value = false
+        const status = this.getStatusFromSearch()
 
-        this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value } }), () => {
-            this.props.onSetCriteria(this.state.criteria)
-        })
+        if (status) {
+            this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value, status: status } }), () => {
+                this.props.onSetCriteria(this.state.criteria)
+            })
+        } else {
+            this.setState((prevState) => ({ criteria: { ...prevState.criteria, [field]: value } }), () => {
+                this.props.onSetCriteria(this.state.criteria)
+            })
+        }
     }
-
-    onFilter = (ev) => {
-        ev.preventDefault()
-        this.props.onSetCriteria(this.state.criteria)
-    }
-
 
     render() {
-        const { txt, isRead, isStared } = this.state.criteria
+        if (!this.state.criteria) return <React.Fragment></React.Fragment>
+        const { txt } = this.state.criteria
+        const { handleChange } = this
         return <section className="mail-filter">
-
-                <form onSubmit={this.onFilter}>
-                    <input name="txt" type="search" value={txt}
-                        onChange={this.handleChange} ref={this.inputRef} placeholder= "Search mail" />
-
-                    <select onChange={this.handleChange} value={isRead} name="isRead">
-                        <option value="all" >All</option>
-                        <option value={false} >Unread</option>
-                        <option value={true} >Read</option>
-                        {/* <option name="isStared" value={true} >⭐</option> */}
-
-                    </select>
-
-
-                </form>
-            </section>
-        
+            <form onSubmit={ev => ev.preventDefault()}>
+                <input name="txt" type="search" value={txt}
+                    onChange={handleChange} ref={this.inputRef} placeholder="Search mail" />
+                <select onChange={handleChange} name="isRead">
+                    <option value="all" >All</option>
+                    <option value={false} >Unread</option>
+                    <option value={true} >Read</option>
+                </select>
+            </form>
+        </section>
     }
+
 }
 
 export const MailFilter = withRouter(_MailFilter)

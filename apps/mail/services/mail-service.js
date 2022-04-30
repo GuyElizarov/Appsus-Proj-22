@@ -6,7 +6,9 @@ import { utilService } from '../../../services/util-service.js'
 
 export const mailService = {
     query,
-    getById
+    getById,
+    remove,
+    toggleStar
 }
 
 
@@ -18,6 +20,7 @@ const gMails = [{
         subject: 'Save My Compony!',
         body: 'Pleas we need your skills',
         isRead: true,
+        isStared: true,
         sentAt: 1551133930594,
         from: 'yaron@momo.com',
         to: 'user@appsus.com',
@@ -29,6 +32,7 @@ const gMails = [{
         subject: 'Top Secret',
         body: 'I am PUKI!!!',
         isRead: true,
+        isStared: false,
         sentAt: 1551133930594,
         from: 'nadav@momo.com',
         to: 'user@appsus.com',
@@ -40,6 +44,7 @@ const gMails = [{
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
+        isStared: false,
         sentAt: 1551133930594,
         from: 'freedom@muki.co.il',
         to: 'user@appsus.com',
@@ -51,6 +56,7 @@ const gMails = [{
         subject: 'I need a loan...',
         body: 'pleas',
         isRead: false,
+        isStared: false,
         sentAt: 1551133930594,
         from: 'user@appsus.com',
         to: 'momo@momo.com',
@@ -85,15 +91,10 @@ function query(criteria) {
         _saveToStorage(mails)
     }
     if (criteria) {
-        let { isStared, isRead, txt, status } = criteria
-
-
+        let { isRead, txt } = criteria
         mails = mails.filter(mail => {
-
-            if (isRead === "all") return (isTxtInMail(txt, mail) && mail.status === status)
-            return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status)
-                // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status)
-                // return (isTxtInMail(txt, mail) && mail.isRead === isRead && mail.status === status && mail.isStared===isStared)
+            if (isRead === "all") return (isTxtInMail(txt, mail))
+            return (isTxtInMail(txt, mail) && mail.isRead === isRead)
         })
     }
     return Promise.resolve(mails)
@@ -115,6 +116,21 @@ function getById(mailId) {
     return Promise.resolve(mail)
 }
 
+function remove(mailId) {
+    let mails = _loadFromStorage()
+    mails = mails.filter(mail => mail.id !== mailId)
+    _saveToStorage(mails)
+    return Promise.resolve()
+}
+
+function toggleStar(mailId) {
+    let mails = _loadFromStorage()
+    let mail = mails.find(mail => mail.id !== mailId)
+    mail.isStared = !mail.isStared
+    _saveToStorage(mails)
+    return Promise.resolve(mail)
+}
+
 function _createMail(to, subject, body) {
     return {
         id: utilService.makeId(),
@@ -127,7 +143,6 @@ function _createMail(to, subject, body) {
         to,
     }
 }
-
 
 function _saveToStorage(mails) {
     storageService.saveToStorage(MAIL_KEY, mails)

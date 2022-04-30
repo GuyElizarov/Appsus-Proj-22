@@ -1,6 +1,5 @@
 const { withRouter } = ReactRouterDOM
 
-import {} from ''
 
 class _MailFolderList extends React.Component {
 

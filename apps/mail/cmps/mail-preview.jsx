@@ -34,14 +34,35 @@ export class MailPreview extends React.Component {
 
         return <Link to={`/mail/${id}`}>
             <div className="mail-preview">
-                <p><small>from:</small> {from}</p>
-                <p>{name}</p>
-                <p><small>sub:</small> {subject}</p>
+                <div>
+                    {mail && <MailStar mail={mail} onToggleStar={onToggleStar} />}
 
-                <p> {day}/{month} </p>
-                {mail && <MailStar mail={mail} onToggleStar={onToggleStar} />}
-                <p>{isRead ? '📃' : '✉'}</p>
-                <button onClick={(ev) => this.deleteMail(ev, id)}>🗑</button>
+                </div>
+                <div>
+
+                    <p><small>from:</small> {from}</p>
+                </div>
+                <div>
+                    <p>{name}</p>
+
+                </div>
+                <div>
+
+                    <p><small>sub:</small> {subject}</p>
+                </div>
+
+                <div className="bond">
+                    <p>{isRead ? '📃' : '✉'}</p>
+
+                    <button onClick={(ev) => this.deleteMail(ev, id)}><img src='../../../assets/imgs/mail/seo.png' /></button>
+                </div>
+                <div></div>
+
+                <div>
+                    <p> {day}/{month} </p>
+
+                </div>
+
             </div>
         </Link>
     }

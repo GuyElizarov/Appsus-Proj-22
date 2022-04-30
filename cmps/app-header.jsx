@@ -30,5 +30,4 @@ class _AppHeader extends React.Component {
     }
 }
 
-import { } from '../assets/imgs/menu.png'
 export const AppHeader = withRouter(_AppHeader)

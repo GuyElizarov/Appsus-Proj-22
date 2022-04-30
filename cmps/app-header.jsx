@@ -12,7 +12,7 @@ class _AppHeader extends React.Component {
 
     render() {
         return <header className="app-header layout">
-            <NavLink to="/"><div className='app-logo-wrapper'>
+            {/* <NavLink to="/"><div className='app-logo-wrapper'>
                 <img className='app-logo' src='../assets/imgs/appsus-logo.png' />
             </div></NavLink>
             <nav>
@@ -25,7 +25,7 @@ class _AppHeader extends React.Component {
                     <NavLink onClick={this.onToggleNavMenu} to="/" exact><img src='../assets/imgs/google-home.png' /></NavLink>
                 </div>
                 {this.state.isNavOpen && <div className='nav-shadow' onClick={this.onToggleNavMenu}></div>}
-            </nav>
+            </nav> */}
         </header>
     }
 }

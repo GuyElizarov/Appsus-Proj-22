@@ -14,9 +14,3 @@
     border: 0;
     background-color: #fff;
 }
-
-.mail-compose button:hover {
-    color: #3c4043;
-}
-
-.mail-compose button:active {}

@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.121);
 }
 
 .app-header nav a {
@@ -19,7 +20,6 @@
     transform: translateX(100%);
     z-index: 1;
     display: none;
-
 }
 
 .nav-container img {
@@ -37,7 +37,6 @@
     right: 0;
     left: 0;
     bottom: 0;
-
 }
 
 .menu-toggler {
@@ -50,12 +49,12 @@
     background-color: var(--menu-hover-clr);
 }
 
-
-
 .app-logo-header {
     width: 80px;
 }
 
 .app-logo {
+    position: relative;
+    z-index: -1;
     width: 90px;
 }

@@ -9,7 +9,7 @@ class _AppHeader extends React.Component {
         this.setState({ isNavOpen: !currNavState })
     }
 
-
+        
     render() {
         return <header className="app-header layout">
             <NavLink to="/"><div className='app-logo-wrapper'>

@@ -8,16 +8,14 @@ export class _NoteFilter extends React.Component {
 
 
     componentDidMount() {
-        this.setState({ txt: this.props.txt }, () => console.log(this.state))
+        this.setState({ txt: this.props.txt })
     }
 
     handleChange = ({ target }) => {
         const value = target.value
         const field = target.name
-        console.log(value, field)
         this.setState((prevState) => ({ [field]: value }), () => {
             this.props.onSetNoteFilter(this.state.txt)
-            console.log(this.state)
         })
     }
 

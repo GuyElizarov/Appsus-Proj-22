@@ -44,9 +44,9 @@ class _MailFilter extends React.Component {
         const { txt } = this.state.criteria
         const { handleChange } = this
         return <section className="mail-filter">
-            <form onSubmit={ev => ev.preventDefault()}>
+            <form className="filter-form" onSubmit={ev => ev.preventDefault()}>
                 <input name="txt" type="search" value={txt}
-                    onChange={handleChange} ref={this.inputRef} placeholder="Search mail" />
+                    onChange={handleChange} ref={this.inputRef} placeholder="      Search mail" />
                 <select onChange={handleChange} name="isRead">
                     <option value="all" >All</option>
                     <option value={false} >Unread</option>

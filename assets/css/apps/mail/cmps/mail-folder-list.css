@@ -12,3 +12,7 @@
     border-radius: 0% 14% 14% 0% / 0% 100% 100% 0%;
     background-color: #f2f3f5;
 }
+
+.mail-folder-list>*:first-child {
+    margin-top: 20px;
+}

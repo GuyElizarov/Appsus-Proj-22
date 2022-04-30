@@ -6,13 +6,13 @@ import { NoteFilter } from '../cmps/note-filter.jsx'
 export class NoteApp extends React.Component {
 
     state = {
-        filterBy: null
+        filterBy: null,
         notes: [],
 
     }
 
     componentDidMount() {
-        NoteService.query().then(res => this.setState({ notes: res }), () => console.log(this.state))
+        NoteService.query().then(res => this.setState({ notes: res }))
 
     }
 
@@ -40,11 +40,13 @@ export class NoteApp extends React.Component {
         const { duplicateNote } = this.props
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
+
+
     render() {
         const { notes } = this.state
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
-            <NoteFilter />
+            {/* <NoteFilter /> */}
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
             <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />

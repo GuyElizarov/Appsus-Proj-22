@@ -126,7 +126,7 @@ function remove(mailId) {
 
 function toggleStar(mailId) {
     let mails = _loadFromStorage()
-    let mail = mails.find(mail => mail.id !== mailId)
+    let mail = mails.find(mail => mail.id === mailId)
     mail.isStared = !mail.isStared
     _saveToStorage(mails)
     return Promise.resolve(mail)

@@ -54,9 +54,9 @@ export class MailApp extends React.Component {
         this.props.history.goBack()
     }
 
-    // onToggleStar = (mailId) => {
-    //     mailService.toggleStar(mailId).then(this.loadMails)
-    // }
+    onToggleStar = (mailId) => {
+        mailService.toggleStar(mailId).then(this.loadMails)
+    }
 
     // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)

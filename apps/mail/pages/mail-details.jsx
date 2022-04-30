@@ -27,7 +27,6 @@ export class MailDetails extends React.Component {
 
     render() {
         const { mail } = this.state
-        // if (!mail.length)
          return <section className="mail-details">
             <h3>{mail.subject}</h3>
             <p>from: {mail.from}</p>

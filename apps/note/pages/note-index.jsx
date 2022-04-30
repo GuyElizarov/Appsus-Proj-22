@@ -2,10 +2,11 @@ import { NoteService } from '../services/note-service.js'
 
 import { NotesList } from '../cmps/notes-list.jsx'
 import { AddNote } from '../cmps/add-note.jsx'
-import { FilterBy } from '../cmps/FilterBy.jsx'
+import { NoteFilter } from '../cmps/note-filter.jsx'
 export class NoteApp extends React.Component {
 
     state = {
+        filterBy: null
         notes: [],
 
     }
@@ -16,12 +17,6 @@ export class NoteApp extends React.Component {
     }
 
 
-    componentDidUpdate(prevProps, prevState) {
-
-        if (prevProps.match.params.noteId !== this.props.match.params.noteId) {
-            this.loadNotes()
-        }
-    }
 
     onAddNote = (note) => {
         NoteService.addNote(note)
@@ -49,7 +44,7 @@ export class NoteApp extends React.Component {
         const { notes } = this.state
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
-            <FilterBy />
+            <NoteFilter />
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
             <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />

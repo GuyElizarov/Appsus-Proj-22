@@ -80,6 +80,9 @@ function query(filterBy) {
         notes = gNotes
         _saveToStorage(notes)
         return Promise.resolve(notes)
+
+
+
     } else {
 
         return Promise.resolve(notes)

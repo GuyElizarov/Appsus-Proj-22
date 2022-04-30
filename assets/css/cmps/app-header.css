@@ -18,6 +18,7 @@
     top: 65px;
     transform: translateX(100%);
     z-index: 1;
+    display: none;
 
 }
 
@@ -27,6 +28,7 @@
 
 .nav-container.open {
     transform: translateX(10%);
+    display: block;
 }
 
 .nav-shadow {

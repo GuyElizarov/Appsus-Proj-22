@@ -27,13 +27,13 @@ export class AddNoteImg extends React.Component {
         return <div className="check">
             <form onSubmit={this.onSaveNote}>
                 <label htmlFor="text-area">
-                    <textarea type="text" id="text-area" name="url" onChange={this.handleChange} />
+                    <textarea placeholder="Enter image url" type="text" id="text-area" name="url" onChange={this.handleChange} />
                 </label>
                 <label htmlFor="txt">
-                    <textarea name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                    <textarea placeholder="Enter image title " name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
 
-                <button>Add Note</button>
+                <button className="add-button">Add Note</button>
             </form>
         </div>
     }

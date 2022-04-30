@@ -1,5 +1,6 @@
 @import './layout.css';
 @import './note-details.css';
+@import './components/filter-by.css';
 @import './components/add-note.css';
 @import './components/notes-list.css';
 @import './components/note-card.css';

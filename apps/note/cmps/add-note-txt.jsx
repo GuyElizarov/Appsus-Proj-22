@@ -58,9 +58,9 @@ export class AddNoteTxt extends React.Component {
         return <div className="check ">
             <form onSubmit={this.check}>
                 <label htmlFor="text-area">
-                    <textarea type="text" id="text-area" name="txt" onChange={this.handleChange} />
+                    <textarea placeholder="Enter your text" type="text" id="text-area" name="txt" onChange={this.handleChange} />
                 </label>
-                <button onClick={this.check}>Add Note</button>
+                <button onClick={this.check} className="add-button">Add Note</button>
             </form>
         </div >
     }

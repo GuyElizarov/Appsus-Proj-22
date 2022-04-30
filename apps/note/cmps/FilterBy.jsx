@@ -5,7 +5,7 @@ export class FilterBy extends React.Component {
 
 
     render() {
-        return <div className="filter-by">
+        return <div className="filter-by-note">
             <input type="text" placeholder="search" />
         </div>
     }

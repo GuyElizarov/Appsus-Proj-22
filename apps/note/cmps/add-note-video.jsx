@@ -38,10 +38,10 @@ export class AddNoteVideo extends React.Component {
                     <textarea placeholder="Enter video url" type="text" cols="30" rows="10" id="video-url" name="url" onChange={this.handleChange} />
                 </label>
                 <label htmlFor="txt">
-                    <input type="text" placeholder="Enter note txt" name="txt" id="txt" onChange={this.handleChange}></input>
+                    <textarea type="text" placeholder="Enter note txt" name="txt" id="txt" onChange={this.handleChange}></textarea>
                 </label>
 
-                <button>Add Note</button>
+                <button className="add-button">Add Note</button>
             </form>
         </div>
     }

@@ -42,15 +42,15 @@ export class AddNote extends React.Component {
         }
         return <div className='add-note-wrapper'>
 
-            {!isOnAddNote && <div className='add-note-decoy' onClick={this.onOpenAddNote}>hello</div>}
-            {isOnAddNote && <div onClick={this.onCloseShadow} className='blank-shadow'>I am the shadow</div>}
+            {!isOnAddNote && <div className='add-note-decoy' onClick={this.onOpenAddNote}>Write your note</div>}
+            {isOnAddNote && <div onClick={this.onCloseShadow} className='blank-shadow'></div>}
             {isOnAddNote && <DynamicCmp />}
-            <div className='note-type-buttons'>
+            {isOnAddNote && <div className='note-type-buttons'>
                 <button onClick={() => this.onChangeNoteType('note-txt')}> <img src="../../../assets/imgs/note/add-text.png" alt="" /></button>
                 <button onClick={() => this.onChangeNoteType('note-img')}> <img src="../../../assets/imgs/note/add-img.png" alt="" /></button>
                 <button onClick={() => this.onChangeNoteType('note-todos')}> <img src="../../../assets/imgs/note/add-todos.png" alt="" /></button>
                 <button onClick={() => this.onChangeNoteType('note-video')}> <img src="../../../assets/imgs/note/add-video.png" alt="" /></button>
-            </div>
+            </div>}
 
         </div>
     }

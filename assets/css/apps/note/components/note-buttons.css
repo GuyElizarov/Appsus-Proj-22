@@ -22,10 +22,11 @@
 }
 
 .color-picker {
+    background-color: var(--notes-main-color);
     display: flex;
     position: absolute;
     bottom: 0;
-    transform: translate(-25%, 100%);
+    transform: translateY(100%);
     width: fit-content;
     height: 100px;
     align-content: center;
@@ -48,7 +49,7 @@
 }
 
 .color-choice.blank {
-    background-image: url('../../../../imgs/no-color.png');
+    background-image: url('../../../../imgs/note/no-color.png');
     background-position: center;
     background-size: 50px;
 }

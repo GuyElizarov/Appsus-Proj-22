@@ -38,12 +38,12 @@ export class AddNoteTodos extends React.Component {
         return <div className="check">
             <form onSubmit={this.onSaveNote}>
                 <label htmlFor="txt">
-                    <textarea name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                    <textarea placeholder="Enter todos title" name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
                 <label htmlFor="todos">
                     <textarea placeholder="enter comma separated list" type="text" id="note-todos" name="todos" onChange={this.handleChange} />
                 </label>
-                <button>Add Note</button>
+                <button className="add-button">Add Note</button>
             </form>
         </div>
     }

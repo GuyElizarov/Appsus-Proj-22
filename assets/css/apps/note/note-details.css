@@ -1,0 +1,30 @@
+.note-shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(208, 208, 208, 0.317);
+    z-index: 1;
+}
+
+.note-details-card {
+    border-radius: 15px;
+
+    background-color: var(--notes-main-color);
+    position: absolute;
+    width: 600px;
+    min-height: 300px;
+    cursor: auto;
+}
+
+.note-details img,
+iframe {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.note-details iframe {
+    height: 350px;
+}

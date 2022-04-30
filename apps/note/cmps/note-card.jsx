@@ -30,6 +30,12 @@ export class NoteCard extends React.Component {
         changeColor(color, noteId)
 
     }
+    onDuplicateNote = (noteId) => {
+        const { duplicateNote } = this.props
+        duplicateNote(noteId)
+    }
+
+
     backgroundColor
     render() {
         const { noteId, note } = this.props
@@ -49,7 +55,7 @@ export class NoteCard extends React.Component {
         }
         return <div className="note-card" style={style}>
             {getDynamicCmp(note.type)}
-            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} />
+            <NoteButtons noteId={note.id} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />
         </div>
     }
 }

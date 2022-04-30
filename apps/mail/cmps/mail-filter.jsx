@@ -21,16 +21,15 @@ class _MailFilter extends React.Component {
         this.getStatusFromSearch()
     }
 
-    getStatusFromSearch=()=>{
+    getStatusFromSearch = () => {
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
         const status = urlSrcPrm.get('status')
 
-        console.log(status, "status from filter");
-        this.setState((prevState) => ({criteria: { ...prevState.criteria, status } }), () => {
+        this.setState((prevState) => ({ criteria: { ...prevState.criteria, status } }), () => {
             this.props.onSetCriteria(this.state.criteria)
         })
     }
-    
+
     handleChange = ({ target }) => {
         let value = target.value
         const field = target.name
@@ -53,22 +52,22 @@ class _MailFilter extends React.Component {
         const { txt, isRead, isStared } = this.state.criteria
         return <section className="mail-filter">
 
-                <form onSubmit={this.onFilter}>
-                    <input name="txt" type="search" value={txt}
-                        onChange={this.handleChange} ref={this.inputRef} placeholder= "Search mail" />
+            <form onSubmit={this.onFilter}>
+                <input name="txt" type="search" value={txt}
+                    onChange={this.handleChange} ref={this.inputRef} placeholder="Search mail" />
 
-                    <select onChange={this.handleChange} value={isRead} name="isRead">
-                        <option value="all" >All</option>
-                        <option value={false} >Unread</option>
-                        <option value={true} >Read</option>
-                        {/* <option name="isStared" value={true} >⭐</option> */}
+                <select onChange={this.handleChange} value={isRead} name="isRead">
+                    <option value="all" >All</option>
+                    <option value={false} >Unread</option>
+                    <option value={true} >Read</option>
+                    {/* <option name="isStared" value={true} >⭐</option> */}
 
-                    </select>
+                </select>
 
 
-                </form>
-            </section>
-        
+            </form>
+        </section>
+
     }
 }
 

@@ -10,7 +10,8 @@ export function MailPreview({ mail, onDeleteMail, onToggleStar }) {
     const day = utilService.padNum(date.getDay())
 
     const deleteMail = (ev) => {
-        ev.stopPropagation()
+        // ev.stopPropagation()
+        ev.preventDefault()
         onDeleteMail(id)
     }
 

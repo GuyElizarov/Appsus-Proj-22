@@ -6,11 +6,6 @@ class _MailFilter extends React.Component {
 
     state = {
         criteria: null
-        // criteria: {
-        //     status: "inbox",
-        //     txt: '',
-        //     isRead: "all",
-        // }
     }
 
     inputRef = null

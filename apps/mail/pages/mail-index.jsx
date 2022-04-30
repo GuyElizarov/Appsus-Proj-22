@@ -42,21 +42,21 @@ export class MailApp extends React.Component {
         const { mails } = this.state
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
         const status = urlSrcPrm.get('status')
-         if (status === 'stared') return mails.filter(mail => !mail.isStared)
+        if (status === 'stared') return mails.filter(mail => !mail.isStared)
         else return mails.filter(mail => (mail.status === status))
     }
 
     onDeleteMail = (mailId) => {
-        mailService.remove(mailId).then(this.onGoBack)
+        mailService.remove(mailId).then(this.loadMails)
     }
 
     onGoBack = () => {
-        this.props.history.push('/mail')
+        this.props.history.goBack()
     }
 
-    onToggleStar = (mailId) => {
-        mailService.toggleStar(mailId).then(this.loadMails)
-    }
+    // onToggleStar = (mailId) => {
+    //     mailService.toggleStar(mailId).then(this.loadMails)
+    // }
 
     // onComposeMail=(mail)=>{
     //     mailService.addMail(mail)
@@ -66,7 +66,6 @@ export class MailApp extends React.Component {
     render() {
         const { criteria } = this.state
         return <section className="mail-app">
-
             <MailCompose />
             <MailFolderList criteria={criteria} onSetCriteria={this.onSetCriteria} />
             <Switch>

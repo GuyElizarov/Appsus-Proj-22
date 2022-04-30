@@ -17,6 +17,7 @@ export class NoteApp extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
+
         if (prevProps.match.params.noteId !== this.props.match.params.noteId) {
             this.loadNotes()
         }

@@ -18,7 +18,7 @@ export function NotesList({ notes, deleteNote, pinToTop, changeColor, duplicateN
     function onDuplicateNote(noteId) {
         duplicateNote(noteId)
     }
-    return <div className="notes-list">
+    return <div className="notes-list note-layout">
         {notes.map(note => {
             return <NoteCard key={note.id} note={note} deleteNote={onDeleteNote} pinToTop={onPinToTop} changeColor={onChangeColor} duplicateNote={onDuplicateNote} />
         })}

@@ -5,8 +5,8 @@
 
 .note-layout {
 
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .details-layout {
@@ -14,4 +14,9 @@
     padding-right: 1.6rem;
     padding-top: 1rem;
     padding-bottom: 1.6rem;
+}
+
+.layout {
+    padding-left: 2rem;
+    padding-right: 2rem;
 }

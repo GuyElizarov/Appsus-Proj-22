@@ -81,14 +81,6 @@ function query(filterBy) {
         _saveToStorage(notes)
         return Promise.resolve(notes)
     } else {
-        // if (filterBy) {
-        //     let { type, name } = filterBy
-        //     if (!type) type = Infinity
-        //     notes = notes.filter(book => {
-        //         return book.title.includes(name) && book.listPrice.amount < price
-
-        //     })
-        // }
 
         return Promise.resolve(notes)
     }

@@ -4,7 +4,7 @@ export class AddNoteImg extends React.Component {
         type: 'note-img',
         note: {
             url: '',
-            title: ''
+            txt: ''
         }
     }
 
@@ -29,8 +29,8 @@ export class AddNoteImg extends React.Component {
                 <label htmlFor="text-area">
                     <textarea type="text" id="text-area" name="url" onChange={this.handleChange} />
                 </label>
-                <label htmlFor="title">
-                    <textarea name="title" id="title" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                <label htmlFor="txt">
+                    <textarea name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
 
                 <button>Add Note</button>

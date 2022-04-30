@@ -29,7 +29,7 @@ export class NoteDetails extends React.Component {
     onEditNote = (note) => {
         NoteService.editNote(note).then(res => {
             NoteService.query()
-            this.props.history.push('/note')
+            this.props.history.goBack()
         }
         )
     }

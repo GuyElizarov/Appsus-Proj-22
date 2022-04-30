@@ -13,12 +13,10 @@ export class AddNoteTxt extends React.Component {
     componentDidMount() {
 
         if (this.props.isEditable) {
-            console.log(this.props)
             const { info, id } = this.props.note
-            console.log(info, id)
             this.setState({ isEditable: true })
             this.setState({ note: info })
-            this.setState({ noteId: id }, () => console.log(this.state))
+            this.setState({ noteId: id })
         }
 
     }
@@ -26,14 +24,12 @@ export class AddNoteTxt extends React.Component {
     handleChange = ({ target }) => {
         const value = target.value
         const field = target.name
-        this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }), () => {
-        })
+        this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }))
     }
 
     onSaveNote = (ev) => {
         ev.preventDefault()
         if (this.state.isEditable) {
-            console.log(this.state)
             this.props.editNote(this.state)
         } else {
             this.props.onGetNewNote(this.state)
@@ -44,7 +40,6 @@ export class AddNoteTxt extends React.Component {
         ev.preventDefault()
 
         if (this.state.isEditable) {
-            console.log(this.state)
             this.props.editNote(this.state)
         } else {
             this.props.onGetNewNote(this.state)

@@ -79,19 +79,18 @@ function query(filterBy) {
     if (!notes) {
         notes = gNotes
         _saveToStorage(notes)
-        return Promise.resolve(notes)
-
-
-
-    } else {
+        Promise.resolve(notes)
+    }
+    else {
 
         return Promise.resolve(notes)
     }
+
+
 }
 function addNote(note) {
     var notes = _loadFromStorage()
     const newNote = _createNote(note)
-    console.log(newNote)
     notes = [newNote, ...notes]
     _saveToStorage(notes)
 }
@@ -170,9 +169,7 @@ function duplicateNote(noteId) {
 function editNote(noteReceived) {
     const notes = _loadFromStorage()
     const requestedNote = notes.find(note => note.id === noteReceived.noteId)
-    console.log(noteReceived.note)
     requestedNote.info = noteReceived.note
-    console.log(requestedNote)
     _saveToStorage(notes)
     return Promise.resolve()
 

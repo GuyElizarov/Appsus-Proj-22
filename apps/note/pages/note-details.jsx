@@ -40,7 +40,6 @@ export class NoteDetails extends React.Component {
         if (!this.state.note) return <React.Fragment></React.Fragment>
         const { note, isEditable } = this.state
         const getDynamicNote = () => {
-            console.log(isEditable)
             switch (note.type) {
                 case 'note-txt':
                     return <NoteTxtView key={note.id} noteId={note.id} note={note} isEditable={isEditable} editNote={this.onEditNote} />
@@ -57,7 +56,6 @@ export class NoteDetails extends React.Component {
             <div onClick={this.handleEvent} className='note-details-card'>
 
                 {getDynamicNote()}
-                <button onClick={this.enableEdit}>Edit note</button>
             </div>
         </section >
         </Link>

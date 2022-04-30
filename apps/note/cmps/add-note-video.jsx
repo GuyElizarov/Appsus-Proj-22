@@ -4,7 +4,7 @@ export class AddNoteVideo extends React.Component {
         type: 'note-video',
         note: {
             url: '',
-            txt: ''
+            title: ''
         }
     }
 
@@ -37,8 +37,8 @@ export class AddNoteVideo extends React.Component {
                 <label htmlFor="video-url">
                     <textarea placeholder="Enter video url" type="text" cols="30" rows="10" id="video-url" name="url" onChange={this.handleChange} />
                 </label>
-                <label htmlFor="txt">
-                    <textarea type="text" placeholder="Enter note txt" name="txt" id="txt" onChange={this.handleChange}></textarea>
+                <label htmlFor="title">
+                    <textarea type="text" placeholder="Enter note txt" name="title" id="title" onChange={this.handleChange}></textarea>
                 </label>
 
                 <button className="add-button">Add Note</button>

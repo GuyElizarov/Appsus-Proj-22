@@ -1,5 +1,8 @@
 const { NavLink, withRouter } = ReactRouterDOM
-import { slasdf } from '../assets/imgs/'
+import { keepImg } from '../assets/imgs/google-keep.png'
+import { booksImg } from '../assets/imgs/google-books.png'
+import { mailImg } from '../assets/imgs/google-mail.png'
+import { homeImg } from '../assets/imgs/google-home.png'
 
 
 class _AppHeader extends React.Component {
@@ -22,10 +25,10 @@ class _AppHeader extends React.Component {
                 <img className='menu-toggler' onClick={this.onToggleNavMenu} src='../assets/imgs/menu.png' />
 
                 <div className={this.state.isNavOpen ? 'nav-container open' : 'nav-container'}>
-                    <NavLink onClick={this.onToggleNavMenu} to="/note"><img src="../assets/imgs/google-keep.png" alt="" /></NavLink>
-                    <NavLink onClick={this.onToggleNavMenu} to="/book"><img src="../assets/imgs/google-books.png" alt="" /></NavLink>
-                    <NavLink onClick={this.onToggleNavMenu} to="/mail"><img src="../assets/imgs/google-mail.png" alt="" /></NavLink>
-                    <NavLink onClick={this.onToggleNavMenu} to="/" exact><img src="../assets/imgs/google-home.png" alt="" /></NavLink>
+                    <NavLink onClick={this.onToggleNavMenu} to="/note"><img src={keepImg} /></NavLink>
+                    <NavLink onClick={this.onToggleNavMenu} to="/book"><img src={booksImg} /></NavLink>
+                    <NavLink onClick={this.onToggleNavMenu} to="/mail"><img src={mailImg} /></NavLink>
+                    <NavLink onClick={this.onToggleNavMenu} to="/" exact><img src={homeImg} /></NavLink>
                 </div>
                 {this.state.isNavOpen && <div className='nav-shadow' onClick={this.onToggleNavMenu}></div>}
             </nav>

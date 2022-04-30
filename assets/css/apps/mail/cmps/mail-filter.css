@@ -1,0 +1,28 @@
+.mail-filter {
+    border-radius: 8px;
+    max-width: 720px;
+    position: relative;
+    background: #f1f3f4;
+}
+
+.filter-form {
+    border-radius: 8px;
+    position: relative;
+    background: #f1f3f4;
+    border: 1px solid transparent;
+}
+
+.mail-filter form input {
+    background: #f1f3f4;
+    border: 0;
+    height: 46px
+}
+
+.mail-filter form select {
+    position: absolute;
+    right: 0;
+    background: #f1f3f4;
+    justify-self: end;
+    border: 0;
+    height: 46px
+}

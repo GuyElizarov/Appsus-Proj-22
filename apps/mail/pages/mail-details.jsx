@@ -7,7 +7,7 @@ export class MailDetails extends React.Component {
     }
 
     componentDidMount() {
-        this.loadMail
+        this.loadMail()
     }
 
     loadMail = () => {
@@ -19,7 +19,6 @@ export class MailDetails extends React.Component {
 
     returnToList = () => {
         this.props.history.goBack()
-        // this.props.history.push('/mail')
     }
 
     onDeleteMail = () => {
@@ -28,8 +27,8 @@ export class MailDetails extends React.Component {
 
     render() {
         const { mail } = this.state
-        // if (!mail || !mail.length) return <React.Fragment></React.Fragment>
-        return <section className="mail-details">
+        // if (!mail.length)
+         return <section className="mail-details">
             <h3>{mail.subject}</h3>
             <p>from: {mail.from}</p>
             <p>Name: {mail.name}</p>

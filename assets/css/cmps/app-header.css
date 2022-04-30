@@ -7,3 +7,53 @@
 .app-header nav a {
     margin: 1rem;
 }
+
+.nav-container {
+    background-color: var(--notes-main-color);
+    border: 1px solid var(--notes-border-clr);
+    box-shadow: 1px 5px 10px 2px var(--notes-border-clr);
+    position: absolute;
+    width: 200px;
+    right: 0;
+    top: 65px;
+    transform: translateX(100%);
+    z-index: 1;
+
+}
+
+.nav-container img {
+    margin: 5px;
+}
+
+.nav-container.open {
+    transform: translateX(10%);
+}
+
+.nav-shadow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+}
+
+.menu-toggler {
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu-toggler:hover {
+    background-color: var(--menu-hover-clr);
+}
+
+
+
+.app-logo-header {
+    width: 80px;
+}
+
+.app-logo {
+    width: 90px;
+}

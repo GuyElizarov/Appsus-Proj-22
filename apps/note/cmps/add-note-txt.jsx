@@ -49,6 +49,7 @@ export class AddNoteTxt extends React.Component {
         } else {
             this.props.onGetNewNote(this.state)
         }
+
     }
 
 
@@ -59,8 +60,7 @@ export class AddNoteTxt extends React.Component {
                 <label htmlFor="text-area">
                     <textarea type="text" id="text-area" name="txt" onChange={this.handleChange} />
                 </label>
-                {this.state.isEditable && <Link to="/note"><button onClick={this.check}>Add Note</button></Link>}
-                {/* {!this.state.isEditable&& <button></button>} */}
+                <button onClick={this.check}>Add Note</button>
             </form>
         </div >
     }

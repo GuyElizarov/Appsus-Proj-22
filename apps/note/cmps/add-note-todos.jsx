@@ -14,7 +14,6 @@ export class AddNoteTodos extends React.Component {
     handleChange = ({ target }) => {
         const value = target.value
         const field = target.name
-        if (field === 'todos') console.log(value)
         this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }), () => {
         })
     }

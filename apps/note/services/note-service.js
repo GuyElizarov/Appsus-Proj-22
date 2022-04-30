@@ -6,7 +6,11 @@ export const NoteService = {
     addNote,
     remove,
     pinNoteToTop,
-    changeNoteColor
+    changeNoteColor,
+    getById,
+    duplicateNote,
+    editNote
+
 }
 
 
@@ -92,6 +96,7 @@ function query(filterBy) {
 function addNote(note) {
     var notes = _loadFromStorage()
     const newNote = _createNote(note)
+    console.log(newNote)
     notes = [newNote, ...notes]
     _saveToStorage(notes)
 }
@@ -140,13 +145,39 @@ function pinNoteToTop(noteId) {
         return Promise.resolve()
     }
 }
+function getById(noteId) {
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    return Promise.resolve(note)
+}
+
 
 function changeNoteColor(color, noteId) {
     const notes = _loadFromStorage()
     const note = notes.find(note => note.id === noteId)
-    console.log(note)
     note.style.backgroundColor = color
-    console.log(noteId, color)
+    _saveToStorage(notes)
+    return Promise.resolve()
+
+
+}
+function duplicateNote(noteId) {
+    let notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    const newNote = { ...note }
+
+    newNote.id = utilService.makeId()
+    notes.unshift(newNote)
+    _saveToStorage(notes)
+    return Promise.resolve(notes)
+
+}
+function editNote(noteReceived) {
+    const notes = _loadFromStorage()
+    const requestedNote = notes.find(note => note.id === noteReceived.noteId)
+    console.log(noteReceived.note)
+    requestedNote.info = noteReceived.note
+    console.log(requestedNote)
     _saveToStorage(notes)
     return Promise.resolve()
 

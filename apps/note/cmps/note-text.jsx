@@ -21,7 +21,6 @@ export class NoteText extends React.Component {
         const { note } = this.state
         const { style } = this.state
         if (!note) return <React.Fragment></React.Fragment>
-        const backgroundColor = style.backgroundColor
         return <div style={style} className="note" > <Link to={`/note/${note.id}`}>
             <p className='note-layout'>{note.info.txt}</p>
         </Link>

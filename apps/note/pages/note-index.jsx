@@ -11,9 +11,17 @@ export class NoteApp extends React.Component {
     }
 
     componentDidMount() {
-        NoteService.query().then(res => this.setState({ notes: res }))
+        NoteService.query().then(res => this.setState({ notes: res }), () => console.log(this.state))
 
     }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.noteId !== this.props.match.params.noteId) {
+            this.loadNotes()
+        }
+    }
+
     onAddNote = (note) => {
         NoteService.addNote(note)
         this.loadNotes()
@@ -32,6 +40,10 @@ export class NoteApp extends React.Component {
     onChangeColor = (color, noteId) => {
         NoteService.changeNoteColor(color, noteId).then(this.loadNotes)
     }
+    onDuplicateNote = (noteId) => {
+        const { duplicateNote } = this.props
+        NoteService.duplicateNote(noteId).then(this.loadNotes)
+    }
     render() {
         const { notes } = this.state
         return <section className="note-app notes-layout flex column justify-center align-center">
@@ -39,7 +51,7 @@ export class NoteApp extends React.Component {
             <FilterBy />
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
-            <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} />
+            <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />
 
         </section>
     }

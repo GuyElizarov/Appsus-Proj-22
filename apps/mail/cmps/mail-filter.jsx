@@ -22,10 +22,8 @@ class _MailFilter extends React.Component {
 
     getStatusFromSearch = () => {
         const urlSrcPrm = new URLSearchParams(this.props.location.search)
-
         const status = urlSrcPrm.get('status')
         return status
-        
     }
 
     handleChange = ({ target }) => {

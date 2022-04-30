@@ -22,7 +22,7 @@ export class NoteVideo extends React.Component {
         if (!note) return <React.Fragment></React.Fragment>
         return <div style={style} className="note" >
             <iframe allow={'fullscreen'} src={`${note.info.url}`} ></iframe>
-            <span >{note.info.title}</span>
+            <Link to={`/note/${note.id}`}><span className='note-layout'>{note.info.title}</span></Link>
         </div>
     }
 

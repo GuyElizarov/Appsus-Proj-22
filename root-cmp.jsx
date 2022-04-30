@@ -23,14 +23,18 @@ export function App() {
 
             <AppHeader />
             <main>
+
                 <Switch>
-                    <Route path="/note/:noteId" component={NoteDetails} />
                     <Route path="/note" component={NoteApp} />
                     <Route path="/mail" component={MailApp} />
                     <Route path="/book/:bookId" component={BookDetails} />
                     <Route path="/book" component={BookApp} />
                     <Route path="/about" component={AppAbout} />
                     <Route path="/" component={AppHome} />
+                </Switch>
+                <Switch>
+
+                    <Route path="/note/:noteId" component={NoteDetails} />
                 </Switch>
             </main>
 

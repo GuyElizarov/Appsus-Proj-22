@@ -112,6 +112,7 @@ function isTxtInMail(txt, mail) {
 
 function getById(mailId) {
     const mails = _loadFromStorage()
+    console.log(mails);
     const mail = mails.find(mail => mailId === mail.id)
     return Promise.resolve(mail)
 }

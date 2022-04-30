@@ -1,8 +1,5 @@
 
 import { MailPreview } from './mail-preview.jsx'
-import { mailService } from '../services/mail-service.js'
-
-
 
 export function MailList({ mails, onDeleteMail ,onToggleStar}) {
 

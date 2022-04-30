@@ -7,27 +7,28 @@ export class MailDetails extends React.Component {
     }
 
     componentDidMount() {
-        this.loadMail()
+        this.loadMail
     }
 
     loadMail = () => {
         const { mailId } = this.props.match.params
+        console.log(mailId);
         mailService.getById(mailId)
             .then(mail => this.setState({ mail }))
     }
 
     returnToList = () => {
-        this.props.history.push('/mail')
+        this.props.history.goBack()
+        // this.props.history.push('/mail')
     }
 
     onDeleteMail = () => {
-        // const { mailId } = this.props.match.params
         mailService.remove(this.state.mail.id).then(this.returnToList)
     }
 
     render() {
         const { mail } = this.state
-        if (!mail) return <React.Fragment></React.Fragment>
+        // if (!mail || !mail.length) return <React.Fragment></React.Fragment>
         return <section className="mail-details">
             <h3>{mail.subject}</h3>
             <p>from: {mail.from}</p>

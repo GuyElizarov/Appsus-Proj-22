@@ -6,7 +6,7 @@ export class AddNoteTodos extends React.Component {
     state = {
         type: 'note-todos',
         note: {
-            txt: null,
+            label: null,
             todos: null
         }
     }
@@ -37,8 +37,8 @@ export class AddNoteTodos extends React.Component {
 
         return <div className="check">
             <form onSubmit={this.onSaveNote}>
-                <label htmlFor="txt">
-                    <textarea placeholder="Enter todos title" name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                <label htmlFor="label">
+                    <textarea placeholder="Enter todos title" name="label" id="label" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
                 <label htmlFor="todos">
                     <textarea placeholder="enter comma separated list" type="text" id="note-todos" name="todos" onChange={this.handleChange} />

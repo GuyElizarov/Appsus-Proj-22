@@ -15,7 +15,6 @@ export class NoteTxtView extends React.Component {
 
     render() {
         const { noteId, note, isEditable } = this.props
-        console.log(isEditable)
 
         if (!isEditable) return <NoteText noteId={noteId} note={note} />
         if (isEditable) return <AddNoteTxt isEditable={isEditable} note={note} editNote={this.onEditNote} />

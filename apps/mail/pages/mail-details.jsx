@@ -12,7 +12,6 @@ export class MailDetails extends React.Component {
 
     loadMail = () => {
         const { mailId } = this.props.match.params
-        console.log(mailId);
         mailService.getById(mailId)
             .then(mail => this.setState({ mail }))
     }
@@ -27,7 +26,7 @@ export class MailDetails extends React.Component {
 
     render() {
         const { mail } = this.state
-         return <section className="mail-details">
+        return <section className="mail-details">
             <h3>{mail.subject}</h3>
             <p>from: {mail.from}</p>
             <p>Name: {mail.name}</p>

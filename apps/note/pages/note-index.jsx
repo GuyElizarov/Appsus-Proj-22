@@ -6,7 +6,7 @@ import { NoteFilter } from '../cmps/note-filter.jsx'
 export class NoteApp extends React.Component {
 
     state = {
-        filterBy: null,
+        filterBy: '',
         notes: [],
 
     }
@@ -24,7 +24,7 @@ export class NoteApp extends React.Component {
     }
 
     loadNotes = () => {
-        NoteService.query().then(res => this.setState({ notes: res }))
+        NoteService.query(this.state.filterBy).then(res => this.setState({ notes: res }))
     }
     onDeleteNote = (noteId) => {
         NoteService.remove(noteId).then(this.loadNotes)
@@ -40,13 +40,17 @@ export class NoteApp extends React.Component {
         const { duplicateNote } = this.props
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
+    filterBy = () => {
+        this.loadNotes()
+    }
 
 
     render() {
         const { notes } = this.state
+        console.log('hhhhh')
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
-            {/* <NoteFilter /> */}
+            {/* <NoteFilter setNoteFilter={this.onSetNoteFilter} /> */}
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
             <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />

@@ -25,7 +25,6 @@ class _AppHeader extends React.Component {
 
                 <div className={this.state.isNavOpen ? 'nav-container open' : 'nav-container'}>
                     <NavLink onClick={this.onToggleNavMenu} to="/note"><img src="../assets/imgs/google-keep.png" alt="" /></NavLink>
-                    <NavLink onClick={this.onToggleNavMenu} to="/about"> <img src="../assets/imgs/google-about.png" alt="" /></NavLink>
                     <NavLink onClick={this.onToggleNavMenu} to="/book"><img src="../assets/imgs/google-books.png" alt="" /></NavLink>
                     <NavLink onClick={this.onToggleNavMenu} to="/mail"><img src="../assets/imgs/google-mail.png" alt="" /></NavLink>
                     <NavLink onClick={this.onToggleNavMenu} to="/" exact><img src="../assets/imgs/google-home.png" alt="" /></NavLink>

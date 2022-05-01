@@ -26,7 +26,7 @@ export function AppHome() {
             </div>
             <div className="details guys-details">
                 <img src="assets/imgs/eytan.jpeg" alt="" />
-                <p>Eytans right handed man Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, eveniet laudantium? Aliquam minima laborum quae laboriosam sint rem! Cupiditate id illum voluptatum nihil odit, distinctio numquam assumenda sapiente cum iure.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, eveniet laudantium? Aliquam minima laborum quae laboriosam sint rem! Cupiditate id illum voluptatum nihil odit, distinctio numquam assumenda sapiente cum iure.</p>
             </div>
         </div>
 

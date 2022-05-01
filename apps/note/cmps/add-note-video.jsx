@@ -32,13 +32,6 @@ export class AddNoteVideo extends React.Component {
         }
     }
 
-    // onSaveNote = (ev) => {
-    //     ev.preventDefault()
-
-    //     this.props.onGetNewNote(this.state)
-
-    // }
-
     onSaveNote = (ev) => {
         ev.preventDefault()
         console.log('im in the edit1')

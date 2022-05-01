@@ -1,6 +1,14 @@
-export function MailCompose() {
+export class MailCompose extends React.Component {
 
-    return <section className="mail-compose">
-        <button> <img src='assets/imgs/mail/create_32dp.png'></img> Compose</button>
-    </section>
+    state = {
+        criteria: null
+    }
+
+    render() {
+
+        return <section className="mail-compose">
+            i am compose
+        </section>
+
+    }
 }

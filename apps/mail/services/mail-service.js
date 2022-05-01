@@ -3,14 +3,13 @@
 import { storageService } from '../../../services/storage-service.js'
 import { utilService } from '../../../services/util-service.js'
 
-
 export const mailService = {
     query,
     getById,
     remove,
-    toggleStar
+    toggleStar,
+    send
 }
-
 
 const MAIL_KEY = 'mailDB'
 
@@ -141,9 +140,6 @@ const loggedInUser = {
     fullname: 'Mahatma Appsus'
 }
 
-
-
-
 function query(criteria) {
     let mails = _loadFromStorage()
     if (!mails || !mails.length) {
@@ -197,16 +193,33 @@ function toggleStar(mailId) {
     return Promise.resolve(mail)
 }
 
-function _createMail(to, subject, body) {
+function send(mailToSend) {
+    let mails = _loadFromStorage()
+    const mail = _createMail(mailToSend.to, loggedInUser.email, mailToSend.subject, mailToSend.body, 'sent')
+    mails = [mail, ...mails]
+    _saveToStorage(mails)
+    return Promise.resolve()
+}
+
+// function _update(mailToUpdate) {
+//     let mails = _loadFromStorage()
+//     mails = mails.map(mail => mail.id === mailToUpdate.id ? mailToUpdate : mail)
+//     _saveToStorage(mails)
+//     return Promise.resolve()
+// }
+
+function _createMail(to, from, subject, body, status) {
     return {
         id: utilService.makeId(),
         name: loggedInUser.name,
         subject,
         body,
-        // isRead: false,
-        sentAt: 1551133930594,
-        from: loggedInUser.email,
+        isRead: false,
+        isStared: false,
+        sentAt: Date.now(),
+        from,
         to,
+        status
     }
 }
 

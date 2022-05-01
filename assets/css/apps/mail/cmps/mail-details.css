@@ -1,0 +1,12 @@
+.mail-details {
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mail-details-btn {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}

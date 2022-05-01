@@ -68,7 +68,7 @@ export class MailApp extends React.Component {
         const { criteria } = this.state
         return <section className="mail-app">
             <MailComposeBtn />
-            <MailCompose />
+            <MailCompose loadMails={this.loadMails} />
             <MailFolderList criteria={criteria} onSetCriteria={this.onSetCriteria} />
             <Switch>
                 <Route path="/mail/:mailId" component={MailDetails} />

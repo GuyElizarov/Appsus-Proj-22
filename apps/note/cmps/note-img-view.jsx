@@ -1,3 +1,5 @@
+import { NoteImg } from './note-img.jsx'
+import { AddNoteImg } from './add-note-img.jsx'
 export class NoteImgView extends React.Component {
 
 
@@ -5,13 +7,21 @@ export class NoteImgView extends React.Component {
         e.preventDefault()
     }
 
+    onEditNote = (note) => {
+        const { editNote } = this.props
+        console.log('im in the view')
+        editNote(note)
+
+    }
+
 
 
     render() {
-        const { url, title } = this.props.note.info
-        return <div onClick={this.stopPropagation} className='note-details'>
-            <img src={url} alt="" />
-            <h2 className="details-layout">{title}</h2>
-        </div>
+        const { noteId, note, isEditable } = this.props
+        console.log(isEditable)
+        return <React.Fragment>
+            {!isEditable && <NoteImg noteId={noteId} note={note} />}
+            {isEditable && <AddNoteImg isEditable={isEditable} note={note} editNote={this.onEditNote} />}
+        </React.Fragment>
     }
 }

@@ -8,6 +8,29 @@ export class AddNoteImg extends React.Component {
         }
     }
 
+    componentDidMount() {
+
+        if (this.props.isEditable) {
+            const { info, id } = this.props.note
+            // this.setState({ isEditable: true })
+            this.setState({ note: info })
+            this.setState({ noteId: id })
+        }
+
+    }
+    onSaveNote = (ev) => {
+        ev.preventDefault()
+        console.log('im in the edit1')
+        if (this.props.isEditable) {
+            console.log('im in the edit')
+            this.props.editNote(this.state)
+        } else {
+            this.props.onGetNewNote(this.state)
+            console.log('im in the add')
+        }
+
+    }
+
     handleChange = ({ target }) => {
         const value = target.value
         const field = target.name
@@ -15,12 +38,7 @@ export class AddNoteImg extends React.Component {
         })
     }
 
-    onSaveNote = (ev) => {
-        ev.preventDefault()
 
-        this.props.onGetNewNote(this.state)
-
-    }
 
     render() {
 
@@ -33,7 +51,7 @@ export class AddNoteImg extends React.Component {
                     <textarea placeholder="Enter image title " name="title" id="title" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
 
-                <button className="add-button">Add Note</button>
+                <button onClick={this.onSaveNote} className="add-button">Add Note</button>
             </form>
         </div>
     }

@@ -3,6 +3,7 @@ import { NoteTxtView } from '../cmps/note-txt-view.jsx'
 import { NoteImgView } from '../cmps/note-img-view.jsx'
 import { NoteTodosView } from '../cmps/note-todos-view.jsx'
 import { NoteVideoView } from '../cmps/note-video-view.jsx'
+import { eventBusService } from '../../../services/event-bus-service.js'
 const { Link } = ReactRouterDOM
 export class NoteDetails extends React.Component {
 
@@ -27,9 +28,9 @@ export class NoteDetails extends React.Component {
 
     }
     onEditNote = (note) => {
+        console.log(note)
         NoteService.editNote(note).then(res => {
-            NoteService.query()
-            // this.props.history.goBack()
+            eventBusService.emit('update-notes')
         }
         )
     }

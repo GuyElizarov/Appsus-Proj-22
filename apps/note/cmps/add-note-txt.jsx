@@ -2,7 +2,7 @@ const { Link } = ReactRouterDOM
 export class AddNoteTxt extends React.Component {
 
     state = {
-        isEditable: false,
+        // isEditable: false,
         noteId: null,
         type: 'note-txt',
         note: {
@@ -14,7 +14,7 @@ export class AddNoteTxt extends React.Component {
 
         if (this.props.isEditable) {
             const { info, id } = this.props.note
-            this.setState({ isEditable: true })
+            // this.setState({ isEditable: true })
             this.setState({ note: info })
             this.setState({ noteId: id })
         }
@@ -29,9 +29,10 @@ export class AddNoteTxt extends React.Component {
 
     onSaveNote = (ev) => {
         ev.preventDefault()
-        if (this.state.isEditable) {
-            this.props.editNote(this.state)
+        console.log('im in the edit1')
+        if (this.props.isEditable) {
             console.log('im in the edit')
+            this.props.editNote(this.state)
         } else {
             this.props.onGetNewNote(this.state)
             console.log('im in the add')
@@ -51,13 +52,17 @@ export class AddNoteTxt extends React.Component {
 
 
     render() {
-
+        console.log(this.state)
         return <div className="check ">
-            <form onSubmit={this.onSaveNote}>
+            <form onSubmit={(ev) => {
+                ev.preventDefault()
+                console.log('event', ev);
+                //this.onSaveNote(ev)
+            }}>
                 <label htmlFor="text-area">
                     <textarea placeholder="Enter your text" type="text" id="text-area" name="txt" onChange={this.handleChange} />
                 </label>
-                <button className="add-button">Add Note</button>
+                <button onClick={(ev) => this.onSaveNote(ev)} className="add-button">Add Note</button>
             </form>
         </div >
     }

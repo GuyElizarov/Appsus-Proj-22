@@ -10,6 +10,17 @@ export class AddNoteTodos extends React.Component {
             todos: null
         }
     }
+    componentDidMount() {
+
+        if (this.props.isEditable) {
+            const { info, id } = this.props.note
+            // this.setState({ isEditable: true })
+            this.setState({ note: info })
+            this.setState({ noteId: id })
+        }
+
+    }
+
 
     handleChange = ({ target }) => {
         const value = target.value

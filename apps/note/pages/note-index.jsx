@@ -3,6 +3,7 @@ import { NoteService } from '../services/note-service.js'
 import { NotesList } from '../cmps/notes-list.jsx'
 import { AddNote } from '../cmps/add-note.jsx'
 import { NoteFilter } from '../cmps/note-filter.jsx'
+import { eventBusService } from '../../../services/event-bus-service.js'
 export class NoteApp extends React.Component {
 
     state = {
@@ -10,12 +11,15 @@ export class NoteApp extends React.Component {
         notes: [],
 
     }
-
+    removeEvent;
     componentDidMount() {
-        NoteService.query().then(res => this.setState({ notes: res }))
+        NoteService.query().then(res => this.setState((prevState) => ({ ...prevState, notes: [...res] })))
+        eventBusService.on('update-notes', () => {
+            console.log('poop')
+            this.loadNotes()
+        })
 
     }
-
 
 
     onAddNote = (note) => {
@@ -24,7 +28,8 @@ export class NoteApp extends React.Component {
     }
 
     loadNotes = () => {
-        NoteService.query(this.state.filterBy).then(res => this.setState({ notes: res }))
+        NoteService.query(this.state.filterBy).then(res => this.setState({ notes: null }, () => { this.setState({ notes: [...res] }) }))
+        console.log('diareha')
     }
     onDeleteNote = (noteId) => {
         NoteService.remove(noteId).then(this.loadNotes)
@@ -37,11 +42,11 @@ export class NoteApp extends React.Component {
         NoteService.changeNoteColor(color, noteId).then(this.loadNotes)
     }
     onDuplicateNote = (noteId) => {
-        const { duplicateNote } = this.props
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
     filterBy = () => {
         this.loadNotes()
+
     }
 
 

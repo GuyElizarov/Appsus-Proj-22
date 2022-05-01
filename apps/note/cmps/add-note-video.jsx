@@ -8,6 +8,17 @@ export class AddNoteVideo extends React.Component {
         }
     }
 
+    componentDidMount() {
+
+        if (this.props.isEditable) {
+            const { info, id } = this.props.note
+            // this.setState({ isEditable: true })
+            this.setState({ note: info })
+            this.setState({ noteId: id })
+        }
+
+    }
+
     handleChange = ({ target }) => {
         const value = target.value
         const field = target.name
@@ -23,10 +34,23 @@ export class AddNoteVideo extends React.Component {
         }
     }
 
+    // onSaveNote = (ev) => {
+    //     ev.preventDefault()
+
+    //     this.props.onGetNewNote(this.state)
+
+    // }
+
     onSaveNote = (ev) => {
         ev.preventDefault()
-
-        this.props.onGetNewNote(this.state)
+        console.log('im in the edit1')
+        if (this.props.isEditable) {
+            console.log('im in the edit')
+            this.props.editNote(this.state)
+        } else {
+            this.props.onGetNewNote(this.state)
+            console.log('im in the add')
+        }
 
     }
 
@@ -41,7 +65,7 @@ export class AddNoteVideo extends React.Component {
                     <textarea type="text" placeholder="Enter note txt" name="title" id="title" onChange={this.handleChange}></textarea>
                 </label>
 
-                <button className="add-button">Add Note</button>
+                <button onClick={this.onSaveNote} className="add-button">Add Note</button>
             </form>
         </div>
     }

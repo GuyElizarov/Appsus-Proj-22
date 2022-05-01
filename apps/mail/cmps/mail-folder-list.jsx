@@ -8,7 +8,7 @@ class _MailFolderList extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({criteria: this.props.criteria})
+        this.setState({ criteria: this.props.criteria })
     }
 
     getCriteriaFromSearchParm = () => {
@@ -32,12 +32,14 @@ class _MailFolderList extends React.Component {
     }
 
     render() {
+        const { criteria } = this.state
+        if (!criteria) return <React.Fragment></React.Fragment>
         return <section className="mail-folder-list">
-            <div className="inbox" onClick={() => this.setStatus('inbox')} ><div className="folder-icon"><img src="assets/imgs/mail/icons8-inbox-24.png"/> </div>  Inbox</div>
-            <div className="sent" onClick={() => this.setStatus('sent')}><div className="folder-icon"><img  src="assets/imgs/mail/icons8-sent-26.png"/></div>  Sent mail</div>
-            <div className="stared" onClick={() => this.setStatus('stared')}><div className="folder-icon"><img  src="assets/imgs/mail/icons8-star-24.png"/></div>  Stared</div>
-            <div className="draft" onClick={() => this.setStatus('draft')}><div className="folder-icon"><img  src="assets/imgs/mail/icons8-paper-24.png"/></div> Draft</div>
-            <div className="trash" onClick={() => this.setStatus('trash')}> <div className="folder-icon"><img  src="assets/imgs/mail/seo.png"/></div>  Trash</div>
+            <div className={`${criteria.status === 'inbox' ? 'active-inbox' : ''}`} onClick={() => this.setStatus('inbox')} ><div className="folder-icon"><img src="assets/imgs/mail/icons8-inbox-24.png" /> </div>  Inbox</div>
+            <div className={`${criteria.status === 'sent' ? 'active-folder' : ''}`} onClick={() => this.setStatus('sent')}><div className="folder-icon"><img src="assets/imgs/mail/icons8-sent-26.png" /></div>  Sent mail</div>
+            <div className={` ${criteria.status === 'stared' ? 'active-folder' : ''}`} onClick={() => this.setStatus('stared')}><div className="folder-icon"><img src="assets/imgs/mail/icons8-star-24.png" /></div>  Stared</div>
+            <div className={`${criteria.status === 'draft' ? 'active-folder' : ''}`} onClick={() => this.setStatus('draft')}><div className="folder-icon"><img src="assets/imgs/mail/icons8-paper-24.png" /></div> Draft</div>
+            <div className={`${criteria.status === 'trash' ? 'active-folder' : ''}`} onClick={() => this.setStatus('trash')}> <div className="folder-icon"><img src="assets/imgs/mail/seo.png" /></div>  Trash</div>
         </section>
     }
 }

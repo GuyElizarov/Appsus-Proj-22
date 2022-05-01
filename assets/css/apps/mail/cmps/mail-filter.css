@@ -3,6 +3,7 @@
     max-width: 720px;
     position: relative;
     background: #f1f3f4;
+    margin-inline-end: 30px;
 }
 
 .filter-form {

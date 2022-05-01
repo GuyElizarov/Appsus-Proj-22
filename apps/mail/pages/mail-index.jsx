@@ -4,6 +4,7 @@ import { MailFilter } from '../cmps/mail-filter.jsx'
 import { MailFolderList } from '../cmps/mail-folder-list.jsx'
 import { mailService } from '../services/mail-service.js'
 import { MailDetails } from "./mail-details.jsx"
+import { MailComposeBtn } from "../cmps/mail-compose-btn.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 
 const { Route, Switch } = ReactRouterDOM
@@ -66,6 +67,7 @@ export class MailApp extends React.Component {
     render() {
         const { criteria } = this.state
         return <section className="mail-app">
+            <MailComposeBtn />
             <MailCompose />
             <MailFolderList criteria={criteria} onSetCriteria={this.onSetCriteria} />
             <Switch>

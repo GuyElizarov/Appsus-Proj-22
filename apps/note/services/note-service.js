@@ -13,7 +13,6 @@ export const NoteService = {
 
 }
 
-
 const NOTES_KEY = 'notesDB'
 const gNotes = [
     {
@@ -73,21 +72,6 @@ const gNotes = [
 ]
 
 
-// function query(filterBy) {
-
-//     let notes = _loadFromStorage()
-//     if (!notes) {
-//         notes = gNotes
-//         _saveToStorage(notes)
-//         return Promise.resolve(notes)
-//     }
-//     else {
-
-//         return Promise.resolve(notes)
-//     }
-
-
-// }
 function query(filterBy) {
     let notes = _loadFromStorage()
     if (!notes) {
@@ -96,8 +80,12 @@ function query(filterBy) {
     }
 
     if (filterBy) {
-        const text = filterBy
-        notes = notes.filter(note => note.info.txt.includes(text))
+        console.log(filterBy)
+        const text = filterBy.txt
+        const type = filterBy.noteType
+        console.log(text, type)
+        if (type === '') notes = notes.filter(note => note.info.txt.includes(text))
+        else notes = notes.filter(note => note.info.txt.includes(text) && note.type === type)
 
     }
     return Promise.resolve(notes)
@@ -109,9 +97,6 @@ function addNote(note) {
     notes = [newNote, ...notes]
     _saveToStorage(notes)
 }
-
-
-
 
 function _createNote(note) {
     return {
@@ -154,6 +139,7 @@ function pinNoteToTop(noteId) {
         return Promise.resolve()
     }
 }
+
 function getById(noteId) {
     const notes = _loadFromStorage()
     const note = notes.find(note => note.id === noteId)

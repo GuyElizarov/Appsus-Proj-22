@@ -7,10 +7,14 @@ import { eventBusService } from '../../../services/event-bus-service.js'
 export class NoteApp extends React.Component {
 
     state = {
-        filterBy: '',
-        notes: [],
+        filterBy: {
+            txt: '',
+            'note-type': null,
 
+        },
+        notes: [],
     }
+
     removeEvent;
     componentDidMount() {
         NoteService.query().then(res => this.setState((prevState) => ({ ...prevState, notes: [...res] })))
@@ -45,10 +49,17 @@ export class NoteApp extends React.Component {
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
 
-    onSetNoteFilter = (txtFilter) => {
-        this.setState({ filterBy: txtFilter }, this.loadNotes)
-
+    onSetNoteFilter = (filter) => {
+        this.setState({ filterBy: filter }, () => {
+            console.log(this.state)
+            this.loadNotes()
+        })
     }
+    // this.setState((prevState) => ({ filterBy: { ...prevState, txt: filter.txt } }),
+    //      () => this.setState((prevState) => ({ filterBy: { ...prevState, txt: filter.txt } }), () => this.loadNotes))
+    //     //   this.loadNotes)
+
+    // }
 
 
     render() {

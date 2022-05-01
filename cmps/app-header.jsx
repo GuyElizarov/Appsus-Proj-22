@@ -20,6 +20,8 @@ class _AppHeader extends React.Component {
             <nav>
                 <img className='menu-toggler' onClick={this.onToggleNavMenu} src='assets/imgs/menu-button.png' />
 
+                
+
                 <div className={this.state.isNavOpen ? 'nav-container open' : 'nav-container'}>
                     <NavLink onClick={this.onToggleNavMenu} to="/note"><img src='assets/imgs/google-keep.png' /></NavLink>
                     <NavLink onClick={this.onToggleNavMenu} to="/book"><img src='assets/imgs/google-books.png' /></NavLink>

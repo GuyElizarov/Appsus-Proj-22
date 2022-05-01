@@ -54,7 +54,7 @@ export class MailPreview extends React.Component {
                 <div className="bond">
                     <p>{isRead ? '📃' : '✉'}</p>
 
-                    <button onClick={(ev) => this.deleteMail(ev, id)}><img src='./assets/imgs/mail/seo.png' /></button>
+                    <button onClick={(ev) => this.deleteMail(ev, id)}><img src='assets/imgs/mail/seo.png' /></button>
                 </div>
                 <div></div>
 

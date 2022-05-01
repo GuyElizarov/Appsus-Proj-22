@@ -4,7 +4,7 @@ export class AddNoteImg extends React.Component {
         type: 'note-img',
         note: {
             url: '',
-            title: ''
+            txt: ''
         }
     }
 
@@ -32,23 +32,24 @@ export class AddNoteImg extends React.Component {
     }
 
     handleChange = ({ target }) => {
+        console.log(target.value)
         const value = target.value
         const field = target.name
-        this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }), () => {
-        })
+        this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }))
     }
 
 
 
     render() {
+        const { isEditable } = this.props
 
         return <div className="check">
             <form onSubmit={this.onSaveNote}>
-                <label htmlFor="text-area">
-                    <textarea placeholder="Enter image url" type="text" id="text-area" name="url" onChange={this.handleChange} />
+                <label htmlFor="url">
+                    <textarea placeholder="Enter image url" type="text" id="url" name="url" onChange={this.handleChange} />
                 </label>
-                <label htmlFor="title">
-                    <textarea placeholder="Enter image title " name="title" id="title" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                <label htmlFor="txt">
+                    <textarea placeholder="Enter image txt " name="txt" id="txt" cols="30" rows="10" onChange={this.handleChange}></textarea>
                 </label>
 
                 <button onClick={this.onSaveNote} className="add-button">Add Note</button>

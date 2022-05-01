@@ -4,7 +4,7 @@ export class AddNoteVideo extends React.Component {
         type: 'note-video',
         note: {
             url: '',
-            title: ''
+            txt: ''
         }
     }
 
@@ -25,12 +25,10 @@ export class AddNoteVideo extends React.Component {
         if (field === 'url') {
             const urlId = value.split('v=')[1].substring(0, 11)
             const embeddedUrl = `https://www.youtube.com/embed/${urlId}`
-            this.setState((prevState) => ({ note: { ...prevState.note, [field]: embeddedUrl } }), () => {
-            })
+            this.setState((prevState) => ({ note: { ...prevState.note, [field]: embeddedUrl } }))
 
         } else {
-            this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }), () => {
-            })
+            this.setState((prevState) => ({ note: { ...prevState.note, [field]: value } }))
         }
     }
 
@@ -61,8 +59,8 @@ export class AddNoteVideo extends React.Component {
                 <label htmlFor="video-url">
                     <textarea placeholder="Enter video url" type="text" cols="30" rows="10" id="video-url" name="url" onChange={this.handleChange} />
                 </label>
-                <label htmlFor="title">
-                    <textarea type="text" placeholder="Enter note txt" name="title" id="title" onChange={this.handleChange}></textarea>
+                <label htmlFor="txt">
+                    <textarea type="text" placeholder="Enter note txt" name="txt" id="txt" onChange={this.handleChange}></textarea>
                 </label>
 
                 <button onClick={this.onSaveNote} className="add-button">Add Note</button>

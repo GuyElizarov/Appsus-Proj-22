@@ -33,7 +33,7 @@ const gNotes = [
         isPinned: false,
         info: {
             url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
-            title: "Bobi and Me"
+            txt: "Bobi and Me"
         },
         style: {
             backgroundColor: "#cf7676"
@@ -45,7 +45,7 @@ const gNotes = [
         type: "note-todos",
         isPinned: false,
         info: {
-            label: "Get my stuff together",
+            txt: "Get my stuff together",
             todos: [
                 { txt: "Driving liscence", doneAt: null, todoId: utilService.makeId() },
                 { txt: "Coding power", doneAt: 187111111, todoId: utilService.makeId() }
@@ -63,7 +63,7 @@ const gNotes = [
         isPinned: false,
         info: {
             url: "https://www.youtube.com/embed/7A1fNr3KXoM",
-            title: "Bobi and Me"
+            txt: "Bobi and Me"
         },
         style: {
             backgroundColor: "#cf7676"
@@ -73,21 +73,36 @@ const gNotes = [
 ]
 
 
-function query(filterBy) {
+// function query(filterBy) {
 
+//     let notes = _loadFromStorage()
+//     if (!notes) {
+//         notes = gNotes
+//         _saveToStorage(notes)
+//         return Promise.resolve(notes)
+//     }
+//     else {
+
+//         return Promise.resolve(notes)
+//     }
+
+
+// }
+function query(filterBy) {
     let notes = _loadFromStorage()
     if (!notes) {
         notes = gNotes
         _saveToStorage(notes)
-        return Promise.resolve(notes)
-    }
-    else {
-
-        return Promise.resolve(notes)
     }
 
+    if (filterBy) {
+        const text = filterBy
+        notes = notes.filter(note => note.info.txt.includes(text))
 
+    }
+    return Promise.resolve(notes)
 }
+
 function addNote(note) {
     var notes = _loadFromStorage()
     const newNote = _createNote(note)

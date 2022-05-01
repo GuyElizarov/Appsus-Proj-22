@@ -44,8 +44,9 @@ export class NoteApp extends React.Component {
     onDuplicateNote = (noteId) => {
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
-    filterBy = () => {
-        this.loadNotes()
+
+    onSetNoteFilter = (txtFilter) => {
+        this.setState({ filterBy: txtFilter }, this.loadNotes)
 
     }
 
@@ -54,7 +55,7 @@ export class NoteApp extends React.Component {
         const { notes } = this.state
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
-            {/* <NoteFilter setNoteFilter={this.onSetNoteFilter} /> */}
+            <NoteFilter setNoteFilter={this.onSetNoteFilter} />
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
             <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />

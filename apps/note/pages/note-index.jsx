@@ -7,10 +7,14 @@ import { eventBusService } from '../../../services/event-bus-service.js'
 export class NoteApp extends React.Component {
 
     state = {
-        filterBy: '',
-        notes: [],
+        filterBy: {
+            txt: '',
+            'note-type': null,
 
+        },
+        notes: [],
     }
+
     removeEvent;
     componentDidMount() {
         NoteService.query().then(res => this.setState((prevState) => ({ ...prevState, notes: [...res] })))
@@ -44,17 +48,25 @@ export class NoteApp extends React.Component {
     onDuplicateNote = (noteId) => {
         NoteService.duplicateNote(noteId).then(this.loadNotes)
     }
-    filterBy = () => {
-        this.loadNotes()
 
+    onSetNoteFilter = (filter) => {
+        this.setState({ filterBy: filter }, () => {
+            console.log(this.state)
+            this.loadNotes()
+        })
     }
+    // this.setState((prevState) => ({ filterBy: { ...prevState, txt: filter.txt } }),
+    //      () => this.setState((prevState) => ({ filterBy: { ...prevState, txt: filter.txt } }), () => this.loadNotes))
+    //     //   this.loadNotes)
+
+    // }
 
 
     render() {
         const { notes } = this.state
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
-            {/* <NoteFilter setNoteFilter={this.onSetNoteFilter} /> */}
+            <NoteFilter setNoteFilter={this.onSetNoteFilter} />
             <AddNote onAddNote={this.onAddNote} />
             {(!notes || notes.length === 0) && <React.Fragment></React.Fragment>}
             <NotesList notes={notes} deleteNote={this.onDeleteNote} pinToTop={this.onPinToTop} changeColor={this.onChangeColor} duplicateNote={this.onDuplicateNote} />

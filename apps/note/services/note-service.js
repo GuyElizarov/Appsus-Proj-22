@@ -13,7 +13,6 @@ export const NoteService = {
 
 }
 
-
 const NOTES_KEY = 'notesDB'
 const gNotes = [
     {
@@ -33,7 +32,7 @@ const gNotes = [
         isPinned: false,
         info: {
             url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
-            title: "Bobi and Me"
+            txt: "Bobi and Me"
         },
         style: {
             backgroundColor: "#cf7676"
@@ -45,7 +44,7 @@ const gNotes = [
         type: "note-todos",
         isPinned: false,
         info: {
-            label: "Get my stuff together",
+            txt: "Get my stuff together",
             todos: [
                 { txt: "Driving liscence", doneAt: null, todoId: utilService.makeId() },
                 { txt: "Coding power", doneAt: 187111111, todoId: utilService.makeId() }
@@ -63,7 +62,7 @@ const gNotes = [
         isPinned: false,
         info: {
             url: "https://www.youtube.com/embed/7A1fNr3KXoM",
-            title: "Bobi and Me"
+            txt: "Bobi and Me"
         },
         style: {
             backgroundColor: "#cf7676"
@@ -74,29 +73,30 @@ const gNotes = [
 
 
 function query(filterBy) {
-
     let notes = _loadFromStorage()
     if (!notes) {
         notes = gNotes
         _saveToStorage(notes)
-        return Promise.resolve(notes)
-    }
-    else {
-
-        return Promise.resolve(notes)
     }
 
+    if (filterBy) {
+        console.log(filterBy)
+        const text = filterBy.txt
+        const type = filterBy.noteType
+        console.log(text, type)
+        if (type === '') notes = notes.filter(note => note.info.txt.includes(text))
+        else notes = notes.filter(note => note.info.txt.includes(text) && note.type === type)
 
+    }
+    return Promise.resolve(notes)
 }
+
 function addNote(note) {
     var notes = _loadFromStorage()
     const newNote = _createNote(note)
     notes = [newNote, ...notes]
     _saveToStorage(notes)
 }
-
-
-
 
 function _createNote(note) {
     return {
@@ -139,6 +139,7 @@ function pinNoteToTop(noteId) {
         return Promise.resolve()
     }
 }
+
 function getById(noteId) {
     const notes = _loadFromStorage()
     const note = notes.find(note => note.id === noteId)

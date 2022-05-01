@@ -31,31 +31,33 @@ export class AddNoteTxt extends React.Component {
         ev.preventDefault()
         if (this.state.isEditable) {
             this.props.editNote(this.state)
+            console.log('im in the edit')
         } else {
             this.props.onGetNewNote(this.state)
+            console.log('im in the add')
         }
 
     }
-    check = (ev) => {
-        ev.preventDefault()
+    // check = (ev) => {
+    //     ev.preventDefault()
 
-        if (this.state.isEditable) {
-            this.props.editNote(this.state)
-        } else {
-            this.props.onGetNewNote(this.state)
-        }
+    //     if (this.state.isEditable) {
+    //         this.props.editNote(this.state)
+    //     } else {
+    //         this.props.onGetNewNote(this.state)
+    //     }
 
-    }
+    // }
 
 
     render() {
 
         return <div className="check ">
-            <form onSubmit={this.check}>
+            <form onSubmit={this.onSaveNote}>
                 <label htmlFor="text-area">
                     <textarea placeholder="Enter your text" type="text" id="text-area" name="txt" onChange={this.handleChange} />
                 </label>
-                <button onClick={this.check} className="add-button">Add Note</button>
+                <button className="add-button">Add Note</button>
             </form>
         </div >
     }

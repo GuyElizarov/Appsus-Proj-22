@@ -29,13 +29,14 @@ export class NoteDetails extends React.Component {
     onEditNote = (note) => {
         NoteService.editNote(note).then(res => {
             NoteService.query()
-            this.props.history.goBack()
+            // this.props.history.goBack()
         }
         )
     }
 
 
     render() {
+        console.log('hh')
 
         if (!this.state.note) return <React.Fragment></React.Fragment>
         const { note, isEditable } = this.state
@@ -56,6 +57,7 @@ export class NoteDetails extends React.Component {
             <div onClick={this.handleEvent} className='note-details-card'>
 
                 {getDynamicNote()}
+                <button onClick={this.enableEdit}>Edit</button>
             </div>
         </section >
         </Link>

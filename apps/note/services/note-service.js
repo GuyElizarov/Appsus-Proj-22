@@ -79,7 +79,7 @@ function query(filterBy) {
     if (!notes) {
         notes = gNotes
         _saveToStorage(notes)
-        Promise.resolve(notes)
+        return Promise.resolve(notes)
     }
     else {
 

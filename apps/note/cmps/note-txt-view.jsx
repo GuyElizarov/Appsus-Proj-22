@@ -9,15 +9,17 @@ export class NoteTxtView extends React.Component {
 
     onEditNote = (note) => {
         const { editNote } = this.props
+        console.log('im in the view')
         editNote(note)
 
     }
 
     render() {
         const { noteId, note, isEditable } = this.props
-
-        if (!isEditable) return <NoteText noteId={noteId} note={note} />
-        if (isEditable) return <AddNoteTxt isEditable={isEditable} note={note} editNote={this.onEditNote} />
+        return <React.Fragment>
+            {(!isEditable) && <NoteText noteId={noteId} note={note} />}
+            {(isEditable) && <AddNoteTxt isEditable={isEditable} note={note} editNote={this.onEditNote} />}
+        </React.Fragment>
 
     }
 

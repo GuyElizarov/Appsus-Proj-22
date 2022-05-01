@@ -47,7 +47,6 @@ export class NoteApp extends React.Component {
 
     render() {
         const { notes } = this.state
-        console.log('hhhhh')
         return <section className="note-app notes-layout flex column justify-center align-center">
             <h1>i AM The note app</h1>
             {/* <NoteFilter setNoteFilter={this.onSetNoteFilter} /> */}

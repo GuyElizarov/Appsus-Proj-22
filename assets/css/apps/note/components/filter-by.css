@@ -1,3 +1,13 @@
 .filter-by-note {
     margin-bottom: 20px;
 }
+
+input[data-filterName] {
+    width: 300px;
+    padding: 5px;
+
+}
+
+select[data-filterSelect] {
+    padding: 5px;
+}

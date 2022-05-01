@@ -24,8 +24,8 @@ export class NoteFilter extends React.Component {
         console.log('hh')
         if (!this.inputRef) return <React.Fragment></React.Fragment>
         return <div className="filter-by-note">
-            <input ref={this.inputRef} type="text" name="txt" placeholder="search" onChange={this.handleChange} />
-            <select name="noteType" id="" onChange={this.handleChange}>
+            <input ref={this.inputRef} type="text" name="txt" placeholder="search" onChange={this.handleChange} data-filterName />
+            <select name="noteType" id="" onChange={this.handleChange} data-filterSelect>
                 <option value="">All</option>
                 <option value="note-txt">Note txt</option>
                 <option value="note-img">Note img</option>

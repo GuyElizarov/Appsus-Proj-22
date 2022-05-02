@@ -110,7 +110,7 @@ const gMails = [{
         status: 'trash'
     },
     {
-        id: 'e109',
+        id: 'e10t789',
         name: 'Dropbox',
         subject: 'Puki and 10 others made changes',
         body: 'pleas',
@@ -122,7 +122,7 @@ const gMails = [{
         status: 'inbox'
     },
     {
-        id: 'e110',
+        id: 'e11aw350',
         name: 'Guy',
         subject: '(no subject)',
         body: '',
@@ -132,6 +132,77 @@ const gMails = [{
         from: 'user@appsus.com',
         to: 'lovly@momo.com',
         status: 'draft'
+    }, {
+        id: 'e110eww5r',
+        name: 'Guy',
+        subject: '(no subject)',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'draft'
+    },
+    {
+        id: 'e11fcghb0',
+        name: 'Guy',
+        subject: '(no subject)',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'draft'
+    },
+    {
+        id: 'e11szerdt0',
+        name: 'Guy',
+        subject: '(no subject)',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'draft'
+    },
+    {
+        id: 'e11ojp',
+        name: 'Guy',
+        subject: '(no subject)',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'inbox'
+    },
+    {
+        id: 'e11ytdu0',
+        name: 'lorem',
+        subject: '(no subject)',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'inbox'
+    },
+    {
+        id: 'e11rtsy0',
+        name: 'Guy',
+        subject: 'lorem lorem lorem',
+        body: '',
+        isRead: false,
+        isStared: false,
+        sentAt: 1551133930594,
+        from: 'user@appsus.com',
+        to: 'lovly@momo.com',
+        status: 'inbox'
     }
 ]
 

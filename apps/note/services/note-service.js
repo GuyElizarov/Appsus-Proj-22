@@ -31,7 +31,7 @@ const gNotes = [
         type: "note-img",
         isPinned: false,
         info: {
-            url: "https://romanelectrichome.com/wp-content/uploads/2018/06/Roman-Electrical-Wiring-Tips-What-is-Hot-Neutral-and-Ground.jpg",
+            url: "http://cdn.shopify.com/s/files/1/0062/8794/9922/files/impasta_large.png?v=1593114167",
             txt: "Bobi and Me"
         },
         style: {
@@ -61,8 +61,8 @@ const gNotes = [
         type: "note-video",
         isPinned: false,
         info: {
-            url: "https://www.youtube.com/embed/7A1fNr3KXoM",
-            txt: "Bobi and Me"
+            url: "https://www.youtube.com/embed/CYVBfaot8tU",
+            txt: "prepare to laugh"
         },
         style: {
             backgroundColor: "#cf7676"

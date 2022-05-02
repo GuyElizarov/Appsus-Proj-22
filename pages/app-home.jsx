@@ -3,7 +3,7 @@ export function AppHome() {
 
     return <section className="app-home">
         <div className="hero">
-            <h1>Take a step back and know the <br /> your info is save with us</h1>
+            <h1>Take a step back and know that <br /> your info is save with us</h1>
             <span>Come and explore our:</span>
             <div explore-buttons>
                 <Link className="explore-button" to="/note">Notes</Link>

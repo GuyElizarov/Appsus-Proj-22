@@ -2,11 +2,29 @@
     display: flex;
     padding: 0 1rem;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.121);
+    width: 100%;
 }
 
 .mail-preview>* {
     max-width: 14.2857%;
     flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: start;
+}
+
+.mail-preview>*:first-child {
+    width: 50px;
+}
+
+.mail-preview>*:nth-child(3) {
+    flex-grow: 1;
+    width: 80px;
+}
+
+.mail-preview>*:last-child {
+    text-align: end;
 }
 
 .bond {
